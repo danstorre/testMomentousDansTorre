@@ -7,15 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB08D23E1D20868600A88C08 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D23D1D20868600A88C08 /* CoreDataStack.swift */; };
+		FB08D2401D2086CD00A88C08 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D23F1D2086CD00A88C08 /* CoreDataTableViewController.swift */; };
+		FB08D2461D2087DB00A88C08 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */; };
 		FBFAE3001D2068BF0062000A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE2FF1D2068BF0062000A /* AppDelegate.swift */; };
 		FBFAE3021D2068BF0062000A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE3011D2068BF0062000A /* ViewController.swift */; };
 		FBFAE3051D2068BF0062000A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFAE3031D2068BF0062000A /* Main.storyboard */; };
 		FBFAE30A1D2068BF0062000A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBFAE3091D2068BF0062000A /* Assets.xcassets */; };
 		FBFAE30D1D2068BF0062000A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFAE30B1D2068BF0062000A /* LaunchScreen.storyboard */; };
 		FBFAE3161D20693D0062000A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE3141D20693D0062000A /* Model.xcdatamodeld */; };
+		FBFAE3241D207FC00062000A /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE3221D207FC00062000A /* Article+CoreDataProperties.swift */; };
+		FBFAE3251D207FC00062000A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE3231D207FC00062000A /* Article.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB08D23D1D20868600A88C08 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FB08D23F1D2086CD00A88C08 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
+		FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		FBFAE2FC1D2068BF0062000A /* testDanielTorres_Momentous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testDanielTorres_Momentous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFAE2FF1D2068BF0062000A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBFAE3011D2068BF0062000A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +32,8 @@
 		FBFAE30C1D2068BF0062000A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBFAE30E1D2068BF0062000A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBFAE3151D20693D0062000A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FBFAE3221D207FC00062000A /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Article+CoreDataProperties.swift"; path = "../Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FBFAE3231D207FC00062000A /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Article.swift; path = ../Article.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +66,9 @@
 		FBFAE2FE1D2068BF0062000A /* testDanielTorres_Momentous */ = {
 			isa = PBXGroup;
 			children = (
+				FBFAE3261D2080BD0062000A /* Controllers */,
 				FBFAE3171D2069490062000A /* Model */,
 				FBFAE2FF1D2068BF0062000A /* AppDelegate.swift */,
-				FBFAE3011D2068BF0062000A /* ViewController.swift */,
 				FBFAE3031D2068BF0062000A /* Main.storyboard */,
 				FBFAE3091D2068BF0062000A /* Assets.xcassets */,
 				FBFAE30B1D2068BF0062000A /* LaunchScreen.storyboard */,
@@ -71,8 +81,21 @@
 			isa = PBXGroup;
 			children = (
 				FBFAE3141D20693D0062000A /* Model.xcdatamodeld */,
+				FBFAE3221D207FC00062000A /* Article+CoreDataProperties.swift */,
+				FBFAE3231D207FC00062000A /* Article.swift */,
+				FB08D23D1D20868600A88C08 /* CoreDataStack.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		FBFAE3261D2080BD0062000A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FBFAE3011D2068BF0062000A /* ViewController.swift */,
+				FB08D23F1D2086CD00A88C08 /* CoreDataTableViewController.swift */,
+				FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +169,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB08D2401D2086CD00A88C08 /* CoreDataTableViewController.swift in Sources */,
 				FBFAE3021D2068BF0062000A /* ViewController.swift in Sources */,
+				FB08D23E1D20868600A88C08 /* CoreDataStack.swift in Sources */,
+				FBFAE3241D207FC00062000A /* Article+CoreDataProperties.swift in Sources */,
+				FB08D2461D2087DB00A88C08 /* ArticleTableViewController.swift in Sources */,
+				FBFAE3251D207FC00062000A /* Article.swift in Sources */,
 				FBFAE3001D2068BF0062000A /* AppDelegate.swift in Sources */,
 				FBFAE3161D20693D0062000A /* Model.xcdatamodeld in Sources */,
 			);
@@ -302,6 +330,7 @@
 				FBFAE3131D2068BF0062000A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

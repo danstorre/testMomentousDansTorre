@@ -21,13 +21,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="to3-t6-3rw">
                                 <rect key="frame" x="20" y="20" width="560" height="580"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BaO-oY-bQH">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BaO-oY-bQH">
                                         <rect key="frame" x="30" y="0.0" width="501" height="580"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoCatalog" translatesAutoresizingMaskIntoConstraints="NO" id="ISo-pQ-xwf">
                                                 <rect key="frame" x="0.0" y="0.0" width="501" height="476"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoTextCatalog" translatesAutoresizingMaskIntoConstraints="NO" id="ESu-Hv-Aj1">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logoTextCatalog" translatesAutoresizingMaskIntoConstraints="NO" id="ESu-Hv-Aj1">
                                                 <rect key="frame" x="86" y="476" width="330" height="105"/>
                                             </imageView>
                                         </subviews>

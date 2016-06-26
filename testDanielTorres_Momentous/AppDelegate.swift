@@ -13,10 +13,32 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    let stack = CoreDataStack(modelName: "Model")!
+    
+    func preloadData(){
+        
+        // Remove previous stuff (if any)
+        do{
+            try stack.dropAllData()
+        }catch{
+            print("Error droping all objects in DB")
+        }
+        
+        let articleONE = Article(articleTitle: "the new article", context: stack.context)
+        let articleTwo = Article(articleTitle: "the second article", context: stack.context)
+        
+        
+        print(articleONE)
+        print(articleTwo)
+        
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        preloadData()
+        
+        
         return true
     }
 
