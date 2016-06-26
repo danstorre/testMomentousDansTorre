@@ -10,8 +10,8 @@
 		FB08D23E1D20868600A88C08 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D23D1D20868600A88C08 /* CoreDataStack.swift */; };
 		FB08D2401D2086CD00A88C08 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D23F1D2086CD00A88C08 /* CoreDataTableViewController.swift */; };
 		FB08D2461D2087DB00A88C08 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */; };
+		FB08D24C1D208F1500A88C08 /* DetailArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D24B1D208F1500A88C08 /* DetailArticleViewController.swift */; };
 		FBFAE3001D2068BF0062000A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE2FF1D2068BF0062000A /* AppDelegate.swift */; };
-		FBFAE3021D2068BF0062000A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE3011D2068BF0062000A /* ViewController.swift */; };
 		FBFAE3051D2068BF0062000A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFAE3031D2068BF0062000A /* Main.storyboard */; };
 		FBFAE30A1D2068BF0062000A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBFAE3091D2068BF0062000A /* Assets.xcassets */; };
 		FBFAE30D1D2068BF0062000A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFAE30B1D2068BF0062000A /* LaunchScreen.storyboard */; };
@@ -24,9 +24,9 @@
 		FB08D23D1D20868600A88C08 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FB08D23F1D2086CD00A88C08 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
+		FB08D24B1D208F1500A88C08 /* DetailArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailArticleViewController.swift; sourceTree = "<group>"; };
 		FBFAE2FC1D2068BF0062000A /* testDanielTorres_Momentous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testDanielTorres_Momentous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFAE2FF1D2068BF0062000A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FBFAE3011D2068BF0062000A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FBFAE3041D2068BF0062000A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FBFAE3091D2068BF0062000A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBFAE30C1D2068BF0062000A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,9 +91,9 @@
 		FBFAE3261D2080BD0062000A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FBFAE3011D2068BF0062000A /* ViewController.swift */,
 				FB08D23F1D2086CD00A88C08 /* CoreDataTableViewController.swift */,
 				FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */,
+				FB08D24B1D208F1500A88C08 /* DetailArticleViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -169,8 +169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB08D24C1D208F1500A88C08 /* DetailArticleViewController.swift in Sources */,
 				FB08D2401D2086CD00A88C08 /* CoreDataTableViewController.swift in Sources */,
-				FBFAE3021D2068BF0062000A /* ViewController.swift in Sources */,
 				FB08D23E1D20868600A88C08 /* CoreDataStack.swift in Sources */,
 				FBFAE3241D207FC00062000A /* Article+CoreDataProperties.swift in Sources */,
 				FB08D2461D2087DB00A88C08 /* ArticleTableViewController.swift in Sources */,

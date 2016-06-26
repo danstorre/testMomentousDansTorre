@@ -21,8 +21,8 @@ class Article: NSManagedObject {
             self.index = 0
             self.articleId = ""
             self.articleTitle = articleTitle
-            self.articleSubTitle = ""
-            self.articleAbout = ""
+            self.articleSubTitle = "a Sub title"
+            self.articleAbout = "the biggest description there is, the biggest description there is, the biggest description there is, the biggest description there is"
             self.articleImage = ""
             self.creationDate = NSDate()
         }else{

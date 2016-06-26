@@ -23,7 +23,6 @@ struct CoreDataStack {
     // MARK:  - Initializers
     init?(modelName: String){
         
-        // Assumes the model is in the main bundle
         guard let modelURL = NSBundle.mainBundle().URLForResource(modelName, withExtension: "momd") else {
             print("Unable to find \(modelName)in the main bundle")
             return nil}
@@ -150,8 +149,8 @@ extension CoreDataStack {
                         fatalError("Error while saving persisting context: \(error)")
                     }
                 }
-                
             }
+            
         }
         
         

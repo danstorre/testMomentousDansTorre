@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -38,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a02-nC-lQO" id="m3G-s0-UI1">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rds-Cr-cjt">
@@ -61,6 +62,9 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="B6Z-RS-aZf" kind="show" identifier="detailArticle" id="D9m-ca-7DD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -72,6 +76,82 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2239" y="171"/>
+        </scene>
+        <!--Detail Article View Controller-->
+        <scene sceneID="bQw-Dt-1eX">
+            <objects>
+                <viewController id="B6Z-RS-aZf" customClass="DetailArticleViewController" customModule="testDanielTorres_Momentous" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1uq-6S-0jP"/>
+                        <viewControllerLayoutGuide type="bottom" id="BcU-TG-5uP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XnT-Ho-AaR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XIl-Wa-cRi">
+                                <rect key="frame" x="16" y="64" width="288" height="367"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oB-Ny-WYo">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="185"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRm-ZA-I44">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="185"/>
+                                                <state key="normal" image="Delete"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngq-7i-ly5">
+                                        <rect key="frame" x="0.0" y="195" width="288" height="21"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWf-dC-jyJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" secondItem="iWf-dC-jyJ" secondAttribute="height" id="Pd3-CC-35b"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kSN-jp-FMf">
+                                        <rect key="frame" x="0.0" y="225" width="288" height="142"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xGg-4J-9tC">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="142"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="0oB-Ny-WYo" firstAttribute="width" secondItem="XIl-Wa-cRi" secondAttribute="width" id="Lys-Bn-E2K"/>
+                                    <constraint firstItem="Ngq-7i-ly5" firstAttribute="width" secondItem="XIl-Wa-cRi" secondAttribute="width" id="VAg-Ig-vFY"/>
+                                    <constraint firstItem="kSN-jp-FMf" firstAttribute="width" secondItem="XIl-Wa-cRi" secondAttribute="width" id="dTs-Kr-BA5"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XIl-Wa-cRi" firstAttribute="top" secondItem="1uq-6S-0jP" secondAttribute="bottom" id="1Cv-NN-DFh"/>
+                            <constraint firstItem="BcU-TG-5uP" firstAttribute="top" secondItem="XIl-Wa-cRi" secondAttribute="bottom" id="S6B-WO-f1h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XIl-Wa-cRi" secondAttribute="trailing" id="XSz-DZ-h7V"/>
+                            <constraint firstItem="XIl-Wa-cRi" firstAttribute="leading" secondItem="XnT-Ho-AaR" secondAttribute="leadingMargin" id="gXV-Gm-1hR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="articleAboutUI" destination="xGg-4J-9tC" id="gPZ-Qr-qE7"/>
+                        <outlet property="articleImage" destination="LRm-ZA-I44" id="x4M-3n-Ztm"/>
+                        <outlet property="articleTitleUI" destination="iWf-dC-jyJ" id="jrd-m9-qLx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aoK-PH-Kg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2864" y="376"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5id-MX-XyM">
@@ -111,11 +191,11 @@
             </objects>
             <point key="canvasLocation" x="1827" y="171"/>
         </scene>
-        <!--Item 2-->
+        <!--Collection-->
         <scene sceneID="uQg-WP-b3T">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fYY-te-vo7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" image="Grid Filled" id="qNP-F3-MhX"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="Grid Filled" id="qNP-F3-MhX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sks-MX-lOW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
