@@ -73,7 +73,6 @@ class ArticleTableViewController: CoreDataTableViewController {
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -82,14 +81,10 @@ class ArticleTableViewController: CoreDataTableViewController {
             
             if let articleDetailVC = segue.destinationViewController as? DetailArticleViewController{
                 
-                
-                // So far we have a search that will match ALL notes. However, we're
-                // only interested in those within the current notebook:
-                // NSPredicate to the rescue!
                 let indexPath = tableView.indexPathForSelectedRow!
                 let article = fetchedResultsController?.objectAtIndexPath(indexPath) as? Article
                 
-                // Inject the notebook too!
+                // Inject the article
                 articleDetailVC.article = article
                 
             }

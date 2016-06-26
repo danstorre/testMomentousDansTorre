@@ -26,9 +26,12 @@ class DetailArticleViewController: UIViewController {
         else {
             self.title = "details"
         }
-        articleImage.titleLabel?.text = article?.articleImage
+    
         articleTitleUI.text = (article?.articleTitle)! + " - " + (article?.articleSubTitle)!
         articleAboutUI.text = article?.articleAbout
+        
+        self.articleImage.imageView!.imageFromUrl("https://robohash.org/123.png")
+        
         
         print(article)
         // Do any additional setup after loading the view.
@@ -49,5 +52,8 @@ class DetailArticleViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    
 
 }

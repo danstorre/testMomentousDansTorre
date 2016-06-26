@@ -23,7 +23,7 @@ class Article: NSManagedObject {
             self.articleTitle = articleTitle
             self.articleSubTitle = "a Sub title"
             self.articleAbout = "the biggest description there is, the biggest description there is, the biggest description there is, the biggest description there is"
-            self.articleImage = ""
+            self.articleImage = "http://www.ikea.com/gb/en/images/products/drona-box-blue__0162140_PE317380_S4.JPG"
             self.creationDate = NSDate()
         }else{
             fatalError("Unable to find Entity name!")
