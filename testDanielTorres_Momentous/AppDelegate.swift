@@ -49,12 +49,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     case .Success(let data):
                         let json = JSON(data)
                         let responseArticles = ResponseArticles()
-                        print(responseArticles)
-                        responseArticles.llenarResponseLogout(json)
+                        
+                        responseArticles.llenarResponseArticles(json)
                         
                         print("Success Alamofire!" )
                         
-                        print(responseArticles)
+                        for article in responseArticles.articles
+                        {
+                           let articleONE = Article(articleTitle: article.articleTitle!,
+                            index : article.index,
+                            articleId :article.articleId!,
+                            articleSubTitle : article.articleSubTitle!,
+                            articleAbout : article.articleAbout!,
+                            articleImage : article.articleImage!, context: self.stack.context)
+                        }
                     case .Failure(let error):
                         print("error handling alamofire \(error)" )
                     }
@@ -71,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         preloadData()
 
         // Start Autosaving
-        stack.autoSave(60)
+        stack.autoSave(3)
         
         // add new objects in the background
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(5 * NSEC_PER_SEC)), dispatch_get_main_queue()){

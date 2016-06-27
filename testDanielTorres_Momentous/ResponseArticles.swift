@@ -9,11 +9,11 @@
 import UIKit
 import EVReflection
 
-class ResponseArticles: EVObject {
+class ResponseArticles : EVObject {
 
-    var articles : [Article] = []
+    var articles : [ArticleWS] = []
     
-    func llenarResponseLogout(json : JSON){
+    func llenarResponseArticles(json : JSON){
         
         print("the json Articles. . . .")
         print(json.rawString()!)

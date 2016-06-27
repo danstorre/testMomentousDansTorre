@@ -16,10 +16,10 @@ class ConnectionManager: NSObject {
         
         Alamofire.request(Router.articles())
             .responseJSON {(response) in
-                print("Alamofire.response articles. . .")
-                print(response)
-                print("Alamofire.request articles. . .")
-                print(response.request)
+//                print("Alamofire.response articles. . .")
+//                print(response)
+//                print("Alamofire.request articles. . .")
+//                print(response.request)
                 completion(response, response.result.error)
         }
         

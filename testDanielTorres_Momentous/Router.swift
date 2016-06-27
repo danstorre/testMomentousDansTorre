@@ -11,7 +11,7 @@ import Alamofire
 
 enum Router: URLRequestConvertible {
     
-    static let baseURLString = "http://beta.json-generator.com/api/json/get/Vk7mRGFrW"
+    static let baseURLString = "http://beta.json-generator.com/api/json/get/41YgxoKS-"
     static var onlyDevice = UIDevice.currentDevice()
     static var OAuthToken: String?
     

@@ -12,8 +12,17 @@ import CoreData
 
 class Article: NSManagedObject {
 
+    
     // Insert code here to add functionality to your managed object subclass
-    convenience init(articleTitle:String = "New Article", context : NSManagedObjectContext){
+   
+    
+     convenience init(articleTitle:String = "New Article",
+                     index : Int = 0,
+                     articleId : String = "",
+                    articleSubTitle : String  = "",
+                    articleAbout : String = "",
+                    articleImage : String = "",
+                      context : NSManagedObjectContext){
         
         if let ent = NSEntityDescription.entityForName("Article",
                                                        inManagedObjectContext: context){
@@ -30,16 +39,6 @@ class Article: NSManagedObject {
         }
     }
     
-    var humanReadableAge : String{
-        get{
-            let fmt = NSDateFormatter()
-            fmt.timeStyle = .NoStyle
-            fmt.dateStyle = .ShortStyle
-            fmt.doesRelativeDateFormatting = true
-            fmt.locale = NSLocale.currentLocale()
-            
-            return fmt.stringFromDate(creationDate!)
-        }
-    }
+    
 
 }
