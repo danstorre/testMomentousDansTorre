@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DA55C49FDFD668DFB62E6D273812A79A5BD353DD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "FFF71DADF850FB8FBBBA312071CED657BCC2D28F" : 0,
+    "DA55C49FDFD668DFB62E6D273812A79A5BD353DD" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5C2CC587-7B7E-4E57-9BA5-73AEFDCB40BA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "FFF71DADF850FB8FBBBA312071CED657BCC2D28F" : "..\/Synergy\/git\/tpago-mercantil-ios",
+    "DA55C49FDFD668DFB62E6D273812A79A5BD353DD" : "testDanielTorres_Momentous\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "testDanielTorres_Momentous",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "testDanielTorres_Momentous.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/danstorre\/testMomentousDansTorre.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DA55C49FDFD668DFB62E6D273812A79A5BD353DD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git.synergy-gb.com:movilidad\/tpago-mercantil-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FFF71DADF850FB8FBBBA312071CED657BCC2D28F"
+    }
+  ]
+}
