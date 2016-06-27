@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="Article" representedClassName=".Article" syncable="YES">
+        <attribute name="articleAbout" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleId" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="articleSubTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleTitle" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="index" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <relationship name="image" maxCount="1" deletionRule="Cascade" destinationEntity="ImageArticle" inverseName="article" inverseEntity="ImageArticle" syncable="YES"/>
+    </entity>
+    <entity name="ImageArticle" representedClassName=".ImageArticle" syncable="YES">
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="article" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="image" inverseEntity="Article" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Article" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="ImageArticle" positionX="-54" positionY="45" width="128" height="75"/>
+    </elements>
+</model>

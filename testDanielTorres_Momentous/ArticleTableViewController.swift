@@ -56,7 +56,8 @@ class ArticleTableViewController: CoreDataTableViewController {
         // Sync article -> cell
         cell.textLabel?.text = article.articleTitle
         cell.detailTextLabel?.text = article.articleSubTitle
-        
+        let image = UIImage(data: article.image!.imageData!)
+        cell.imageView?.image = image
         
         return cell
         

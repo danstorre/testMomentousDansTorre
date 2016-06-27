@@ -32,8 +32,9 @@ class DetailArticleViewController: UIViewController {
     
         articleTitleUI.text = (article?.articleTitle)! + " - " + (article?.articleSubTitle)!
         articleAboutUI.text = article?.articleAbout
-        let URL = NSURL(string: (article?.articleImage)!)!
-        imgae.af_setImageWithURL(URL,imageTransition: .CrossDissolve(0.6))
+        
+        let image = UIImage(data: (article?.image!.imageData)!)
+        imgae.image = image
         
         print(article)
         // Do any additional setup after loading the view.

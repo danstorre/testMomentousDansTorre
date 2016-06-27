@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let stack = CoreDataStack(modelName: "Model")!
     let connectionManager : ConnectionManager = ConnectionManager()
     
-    func preloadData(){
+    func eraseData(){
         
         // Remove previous stuff (if any)
         do{
@@ -26,12 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Error droping all objects in DB")
         }
         
-        let articleONE = Article(articleTitle: "the new article", context: stack.context)
-        let articleTwo = Article(articleTitle: "the second article", context: stack.context)
-        
-        
-        print(articleONE)
-        print(articleTwo)
         
     }
     
@@ -56,12 +50,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         for article in responseArticles.articles
                         {
-                           let articleONE = Article(articleTitle: article.articleTitle!,
-                            index : article.index,
-                            articleId :article.articleId!,
-                            articleSubTitle : article.articleSubTitle!,
-                            articleAbout : article.articleAbout!,
-                            articleImage : article.articleImage!, context: self.stack.context)
+                            Alamofire.request(.GET, article.articleImage!)
+                                .responseImage { response in
+                                    if let imageData = response.result.value {
+                                        let image = imageData
+                                        _ = Article(articleTitle: article.articleTitle!,
+                                            index : article.index,
+                                            articleId :article.articleId!,
+                                            articleSubTitle : article.articleSubTitle!,
+                                            articleAbout : article.articleAbout!,
+                                            articleImage : image, context: self.stack.context)
+                                    }
+                            }
                         }
                     case .Failure(let error):
                         print("error handling alamofire \(error)" )
@@ -76,13 +76,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        preloadData()
+        eraseData()
 
-        // Start Autosaving
-        stack.autoSave(3)
+        // Start Autosaving by seconds
+        stack.autoSave(5)
         
-        // add new objects in the background
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(5 * NSEC_PER_SEC)), dispatch_get_main_queue()){
+        // add new objects in the background from web in 2 seconds after the app launch
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
             self.backgroundLoad()
         }
         

@@ -2,7 +2,7 @@
 //  Article+CoreDataProperties.swift
 //  testDanielTorres_Momentous
 //
-//  Created by Daniel Torres on 6/26/16.
+//  Created by Daniel Torres on 6/27/16.
 //  Copyright © 2016 Danieltorres. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,12 +14,12 @@ import CoreData
 
 extension Article {
 
-    @NSManaged var index: NSNumber?
-    @NSManaged var articleId: String?
-    @NSManaged var articleTitle: String?
-    @NSManaged var articleSubTitle: String?
     @NSManaged var articleAbout: String?
-    @NSManaged var articleImage: String?
+    @NSManaged var articleId: String?
+    @NSManaged var articleSubTitle: String?
+    @NSManaged var articleTitle: String?
     @NSManaged var creationDate: NSDate?
+    @NSManaged var index: NSNumber?
+    @NSManaged var image: ImageArticle?
 
 }

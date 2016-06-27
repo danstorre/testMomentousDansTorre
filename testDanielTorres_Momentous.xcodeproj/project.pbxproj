@@ -23,13 +23,15 @@
 		FB1AD71C1D20DB9000C1829B /* ResponseArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1AD71B1D20DB9000C1829B /* ResponseArticles.swift */; };
 		FB1AD71E1D20DC3400C1829B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1AD71D1D20DC3400C1829B /* SwiftyJSON.swift */; };
 		FB1AD7201D20E3CA00C1829B /* ArticleWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1AD71F1D20E3CA00C1829B /* ArticleWS.swift */; };
+		FBE1DA311D215D2900E79D6D /* ImageArticle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1DA2F1D215D2900E79D6D /* ImageArticle+CoreDataProperties.swift */; };
+		FBE1DA321D215D2900E79D6D /* ImageArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1DA301D215D2900E79D6D /* ImageArticle.swift */; };
+		FBE1DA3A1D21610E00E79D6D /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1DA381D21610E00E79D6D /* Article+CoreDataProperties.swift */; };
+		FBE1DA3B1D21610E00E79D6D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1DA391D21610E00E79D6D /* Article.swift */; };
 		FBFAE3001D2068BF0062000A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE2FF1D2068BF0062000A /* AppDelegate.swift */; };
 		FBFAE3051D2068BF0062000A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFAE3031D2068BF0062000A /* Main.storyboard */; };
 		FBFAE30A1D2068BF0062000A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBFAE3091D2068BF0062000A /* Assets.xcassets */; };
 		FBFAE30D1D2068BF0062000A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBFAE30B1D2068BF0062000A /* LaunchScreen.storyboard */; };
 		FBFAE3161D20693D0062000A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE3141D20693D0062000A /* Model.xcdatamodeld */; };
-		FBFAE3241D207FC00062000A /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE3221D207FC00062000A /* Article+CoreDataProperties.swift */; };
-		FBFAE3251D207FC00062000A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAE3231D207FC00062000A /* Article.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,12 @@
 		FB1AD71B1D20DB9000C1829B /* ResponseArticles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseArticles.swift; sourceTree = "<group>"; };
 		FB1AD71D1D20DC3400C1829B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		FB1AD71F1D20E3CA00C1829B /* ArticleWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleWS.swift; sourceTree = "<group>"; };
+		FBE1DA281D215B7800E79D6D /* ModelArticlesWithImages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ModelArticlesWithImages.xcdatamodel; sourceTree = "<group>"; };
+		FBE1DA2F1D215D2900E79D6D /* ImageArticle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ImageArticle+CoreDataProperties.swift"; path = "../ImageArticle+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FBE1DA301D215D2900E79D6D /* ImageArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageArticle.swift; path = ../ImageArticle.swift; sourceTree = "<group>"; };
+		FBE1DA371D2160D700E79D6D /* ModelArticlesWithImages_.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ModelArticlesWithImages_.xcdatamodel; sourceTree = "<group>"; };
+		FBE1DA381D21610E00E79D6D /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Article+CoreDataProperties.swift"; path = "../Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FBE1DA391D21610E00E79D6D /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Article.swift; path = ../Article.swift; sourceTree = "<group>"; };
 		FBFAE2FC1D2068BF0062000A /* testDanielTorres_Momentous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testDanielTorres_Momentous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFAE2FF1D2068BF0062000A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBFAE3041D2068BF0062000A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,8 +136,6 @@
 		FBFAE30C1D2068BF0062000A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBFAE30E1D2068BF0062000A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBFAE3151D20693D0062000A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		FBFAE3221D207FC00062000A /* Article+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Article+CoreDataProperties.swift"; path = "../Article+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		FBFAE3231D207FC00062000A /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Article.swift; path = ../Article.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,9 +241,11 @@
 			children = (
 				FB1AD6F91D20D8F000C1829B /* Responses */,
 				FBFAE3141D20693D0062000A /* Model.xcdatamodeld */,
-				FBFAE3221D207FC00062000A /* Article+CoreDataProperties.swift */,
-				FBFAE3231D207FC00062000A /* Article.swift */,
 				FB08D23D1D20868600A88C08 /* CoreDataStack.swift */,
+				FBE1DA2F1D215D2900E79D6D /* ImageArticle+CoreDataProperties.swift */,
+				FBE1DA301D215D2900E79D6D /* ImageArticle.swift */,
+				FBE1DA381D21610E00E79D6D /* Article+CoreDataProperties.swift */,
+				FBE1DA391D21610E00E79D6D /* Article.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -387,13 +395,15 @@
 				FB08D2401D2086CD00A88C08 /* CoreDataTableViewController.swift in Sources */,
 				FB1AD6F51D20D81000C1829B /* Router.swift in Sources */,
 				FB08D23E1D20868600A88C08 /* CoreDataStack.swift in Sources */,
-				FBFAE3241D207FC00062000A /* Article+CoreDataProperties.swift in Sources */,
+				FBE1DA321D215D2900E79D6D /* ImageArticle.swift in Sources */,
 				FB1AD6F31D20D7D900C1829B /* ConnectionManager.swift in Sources */,
 				FB08D2461D2087DB00A88C08 /* ArticleTableViewController.swift in Sources */,
 				FB1AD6F71D20D81B00C1829B /* Reachability.swift in Sources */,
-				FBFAE3251D207FC00062000A /* Article.swift in Sources */,
+				FBE1DA311D215D2900E79D6D /* ImageArticle+CoreDataProperties.swift in Sources */,
 				FBFAE3001D2068BF0062000A /* AppDelegate.swift in Sources */,
 				FB1AD71C1D20DB9000C1829B /* ResponseArticles.swift in Sources */,
+				FBE1DA3A1D21610E00E79D6D /* Article+CoreDataProperties.swift in Sources */,
+				FBE1DA3B1D21610E00E79D6D /* Article.swift in Sources */,
 				FB1AD71E1D20DC3400C1829B /* SwiftyJSON.swift in Sources */,
 				FB1AD7201D20E3CA00C1829B /* ArticleWS.swift in Sources */,
 				FBFAE3161D20693D0062000A /* Model.xcdatamodeld in Sources */,
@@ -576,9 +586,11 @@
 		FBFAE3141D20693D0062000A /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FBE1DA371D2160D700E79D6D /* ModelArticlesWithImages_.xcdatamodel */,
+				FBE1DA281D215B7800E79D6D /* ModelArticlesWithImages.xcdatamodel */,
 				FBFAE3151D20693D0062000A /* Model.xcdatamodel */,
 			);
-			currentVersion = FBFAE3151D20693D0062000A /* Model.xcdatamodel */;
+			currentVersion = FBE1DA371D2160D700E79D6D /* ModelArticlesWithImages_.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
