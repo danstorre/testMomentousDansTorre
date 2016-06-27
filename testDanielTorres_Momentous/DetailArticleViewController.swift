@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import AlamofireImage
+import Alamofire
 
 class DetailArticleViewController: UIViewController {
 
     var article : Article?
-    @IBOutlet weak var articleImage: UIButton!
+
+    @IBOutlet weak var imgae: UIImageView!
     @IBOutlet weak var articleTitleUI: UILabel!
     @IBOutlet weak var articleAboutUI: UITextView!
     
@@ -29,9 +32,8 @@ class DetailArticleViewController: UIViewController {
     
         articleTitleUI.text = (article?.articleTitle)! + " - " + (article?.articleSubTitle)!
         articleAboutUI.text = article?.articleAbout
-        
-        self.articleImage.imageView!.imageFromUrl("https://robohash.org/123.png")
-        
+        let URL = NSURL(string: (article?.articleImage)!)!
+        imgae.af_setImageWithURL(URL,imageTransition: .CrossDissolve(0.6))
         
         print(article)
         // Do any additional setup after loading the view.

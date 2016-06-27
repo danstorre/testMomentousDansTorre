@@ -9,13 +9,14 @@
 import UIKit
 import CoreData
 
+
 class ArticleTableViewController: CoreDataTableViewController {
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         // Set the title
         title = "Table"
         
