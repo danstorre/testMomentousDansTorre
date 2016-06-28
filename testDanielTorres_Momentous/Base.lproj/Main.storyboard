@@ -381,7 +381,7 @@
             </objects>
             <point key="canvasLocation" x="2832" y="171"/>
         </scene>
-        <!--Detail Article View Controller-->
+        <!--Title-->
         <scene sceneID="bQw-Dt-1eX">
             <objects>
                 <viewController id="B6Z-RS-aZf" customClass="DetailArticleViewController" customModule="testDanielTorres_Momentous" customModuleProvider="target" sceneMemberID="viewController">
@@ -468,6 +468,13 @@
                             <constraint firstItem="BcU-TG-5uP" firstAttribute="top" secondItem="50b-sI-mBs" secondAttribute="bottom" id="wil-eg-S9H"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="ZHc-6U-33P">
+                        <barButtonItem key="rightBarButtonItem" image="Delete" id="bAO-Te-uVA">
+                            <connections>
+                                <action selector="deleteButton:" destination="B6Z-RS-aZf" id="PBx-0c-Ucf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="articleAboutUI" destination="gvK-Ct-fy2" id="kGp-W0-1jK"/>
@@ -539,6 +546,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Delete" width="25" height="25"/>
         <image name="Grid Filled" width="25" height="25"/>
         <image name="Horizontal Settings Mixer Filled" width="25" height="25"/>
         <image name="List" width="25" height="25"/>

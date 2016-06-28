@@ -24,6 +24,7 @@
 		FB1AD71C1D20DB9000C1829B /* ResponseArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1AD71B1D20DB9000C1829B /* ResponseArticles.swift */; };
 		FB1AD71E1D20DC3400C1829B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1AD71D1D20DC3400C1829B /* SwiftyJSON.swift */; };
 		FB1AD7201D20E3CA00C1829B /* ArticleWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1AD71F1D20E3CA00C1829B /* ArticleWS.swift */; };
+		FBC1386D1D232EEF00035C11 /* uialertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1386C1D232EEF00035C11 /* uialertControllerExtensions.swift */; };
 		FBE1DA311D215D2900E79D6D /* ImageArticle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1DA2F1D215D2900E79D6D /* ImageArticle+CoreDataProperties.swift */; };
 		FBE1DA321D215D2900E79D6D /* ImageArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1DA301D215D2900E79D6D /* ImageArticle.swift */; };
 		FBE1DA3A1D21610E00E79D6D /* Article+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1DA381D21610E00E79D6D /* Article+CoreDataProperties.swift */; };
@@ -128,6 +129,7 @@
 		FB1AD71B1D20DB9000C1829B /* ResponseArticles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseArticles.swift; sourceTree = "<group>"; };
 		FB1AD71D1D20DC3400C1829B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		FB1AD71F1D20E3CA00C1829B /* ArticleWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleWS.swift; sourceTree = "<group>"; };
+		FBC1386C1D232EEF00035C11 /* uialertControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uialertControllerExtensions.swift; sourceTree = "<group>"; };
 		FBE1DA281D215B7800E79D6D /* ModelArticlesWithImages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ModelArticlesWithImages.xcdatamodel; sourceTree = "<group>"; };
 		FBE1DA2F1D215D2900E79D6D /* ImageArticle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ImageArticle+CoreDataProperties.swift"; path = "../ImageArticle+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBE1DA301D215D2900E79D6D /* ImageArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageArticle.swift; path = ../ImageArticle.swift; sourceTree = "<group>"; };
@@ -213,6 +215,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FBC138651D232EBB00035C11 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FBC1386C1D232EEF00035C11 /* uialertControllerExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		FBE1DA401D21881500E79D6D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +280,7 @@
 		FBFAE3261D2080BD0062000A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FBC138651D232EBB00035C11 /* Extensions */,
 				FB08D23F1D2086CD00A88C08 /* CoreDataTableViewController.swift */,
 				FBE1DA3C1D2178BF00E79D6D /* CoreDataCollectionViewController.swift */,
 				FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */,
@@ -426,6 +437,7 @@
 				FBFAE3001D2068BF0062000A /* AppDelegate.swift in Sources */,
 				FB1AD71C1D20DB9000C1829B /* ResponseArticles.swift in Sources */,
 				FBE1DA3A1D21610E00E79D6D /* Article+CoreDataProperties.swift in Sources */,
+				FBC1386D1D232EEF00035C11 /* uialertControllerExtensions.swift in Sources */,
 				FBE1DA3F1D217FD600E79D6D /* ArticleCollectionViewController.swift in Sources */,
 				FBE1DA3B1D21610E00E79D6D /* Article.swift in Sources */,
 				FB1AD71E1D20DC3400C1829B /* SwiftyJSON.swift in Sources */,
