@@ -14,11 +14,11 @@ class DetailArticleViewController: UIViewController {
 
     var article : Article?
 
-    @IBOutlet weak var imgae: UIImageView!
     @IBOutlet weak var articleTitleUI: UILabel!
-    @IBOutlet weak var articleAboutUI: UITextView!
+    @IBOutlet weak var articleAboutUI: UILabel!
+    @IBOutlet weak var buttonImage: UIButton!
     
-    
+    @IBOutlet weak var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,9 +32,11 @@ class DetailArticleViewController: UIViewController {
     
         articleTitleUI.text = (article?.articleTitle)! + " - " + (article?.articleSubTitle)!
         articleAboutUI.text = article?.articleAbout
-        
+        print (article?.articleAbout)
+        print (article?.articleAbout)
         let image = UIImage(data: (article?.image!.imageData)!)
-        imgae.image = image
+        buttonImage.imageView!.contentMode = .ScaleAspectFit
+        buttonImage.setImage(image, forState: .Normal)
         
         print(article)
         // Do any additional setup after loading the view.
@@ -46,6 +48,13 @@ class DetailArticleViewController: UIViewController {
     }
     
 
+    @IBAction func hideButton(sender: UIButton) {
+        
+        UIView.animateWithDuration(0.4){
+            self.buttonImage.hidden = true
+        }
+        
+    }
     /*
     // MARK: - Navigation
 

@@ -76,15 +76,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        eraseData()
+       // eraseData()
 
         // Start Autosaving by seconds
-        stack.autoSave(5)
+       // stack.autoSave(5)
         
         // add new objects in the background from web in 2 seconds after the app launch
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
-            self.backgroundLoad()
-        }
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
+//            self.backgroundLoad()
+//        }
         
         
         

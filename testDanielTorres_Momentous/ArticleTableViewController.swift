@@ -14,9 +14,11 @@ class ArticleTableViewController: CoreDataTableViewController {
 
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        
         // Set the title
         title = "Table"
         
@@ -32,6 +34,10 @@ class ArticleTableViewController: CoreDataTableViewController {
         // Create the FetchedResultsController
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+
+        // makes the searchbar stay in the current screen and not spill into the next screen
+        definesPresentationContext = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,10 +98,48 @@ class ArticleTableViewController: CoreDataTableViewController {
             }
         }
     }
+    
+    
+    
+}
 
-
-    
-    
-    
-    
+extension ArticleTableViewController: UISearchResultsUpdating {
+    // updates the table view with the search results as user is typing...
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
+        // process the search string, remove leading and trailing spaces
+        let searchText = searchController.searchBar.text!
+        let trimmedSearchString = searchText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        
+        
+        let fr = NSFetchRequest(entityName: "Article")
+        
+        // if search string is not blank
+        if !trimmedSearchString.isEmpty {
+            
+            // form the search format
+            let predicate = NSPredicate(format: "(articleTitle contains [cd] %@)", trimmedSearchString)
+            
+            // add the search filter
+            fr.predicate = predicate
+            fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true),
+                                  NSSortDescriptor(key: "creationDate", ascending: false)]
+        }
+        else {
+            
+            
+            fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true),
+                                  NSSortDescriptor(key: "creationDate", ascending: false)]
+            
+        }
+        
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
+                                                              managedObjectContext:fetchedResultsController!.managedObjectContext,
+                                                              sectionNameKeyPath: nil,
+                                                              cacheName: nil)
+        
+        // refresh the table view
+        self.tableView.reloadData()
+    }
 }
