@@ -19,6 +19,11 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     
     @IBOutlet weak var searchBarView: UISearchBar!
     
+    override func viewWillLayoutSubviews() {
+        
+        self.resultSearchController.searchBar.sizeToFit()
+    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +46,10 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         // initialize search controller after the core data
         self.resultSearchController.searchResultsUpdater = self
         self.resultSearchController.dimsBackgroundDuringPresentation = false
-        self.resultSearchController.searchBar.sizeToFit()
         
-        // places the built-in searchbar into the header of the table
-        self.resultSearchController.searchBar.placeholder = "Search the article title here"
- 
+        
         searchBarView.addSubview(self.resultSearchController.searchBar)
+        
         
         // makes the searchbar stay in the current screen and not spill into the next screen
         definesPresentationContext = true
@@ -66,9 +69,6 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    func collectionView(collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: NSIndexPath) {
-        searchBarView.subviews[0].sizeToFit()
-    }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // Find the right notebook for this indexpath
@@ -104,7 +104,12 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         }
     }
 
-    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        UIView.animateWithDuration(0.4){
+            self.resultSearchController.searchBar.sizeToFit()
+        }
+        
+    }
 
 }
 

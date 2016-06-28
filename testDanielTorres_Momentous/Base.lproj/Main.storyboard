@@ -18,18 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7oj-xT-bU6">
+                                <rect key="frame" x="-4" y="64" width="328" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HWq-Jd-bap">
-                                <rect key="frame" x="16" y="64" width="288" height="367"/>
+                                <rect key="frame" x="-4" y="108" width="328" height="323"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ko1-Lp-PWX">
                                     <size key="itemSize" width="142" height="212"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleCell" id="40P-eI-VcS" customClass="ArticleCollectionCell" customModule="testDanielTorres_Momentous" customModuleProvider="target">
-                                        <rect key="frame" x="73" y="114" width="142" height="212"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="142" height="212"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="142" height="212"/>
@@ -81,10 +85,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="25z-k9-NmK">
-                                    <rect key="frame" x="0.0" y="64" width="288" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="fAu-CR-T6B" id="g75-Ca-wUx"/>
                                     <outlet property="delegate" destination="fAu-CR-T6B" id="4nt-y4-POi"/>
@@ -95,20 +95,34 @@
                         <constraints>
                             <constraint firstItem="IpA-dM-gGP" firstAttribute="top" secondItem="HWq-Jd-bap" secondAttribute="bottom" id="8p8-qU-CC3"/>
                             <constraint firstItem="HWq-Jd-bap" firstAttribute="top" secondItem="o2F-VT-TLz" secondAttribute="bottom" id="C0g-l2-JeG"/>
+                            <constraint firstItem="HWq-Jd-bap" firstAttribute="leading" secondItem="7oj-xT-bU6" secondAttribute="leading" id="Gbk-xw-H9E"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HWq-Jd-bap" secondAttribute="trailing" id="KAW-Tp-mox"/>
+                            <constraint firstItem="7oj-xT-bU6" firstAttribute="leading" secondItem="wPM-v7-FrO" secondAttribute="leadingMargin" constant="-20" id="M6C-mH-qS9"/>
                             <constraint firstItem="HWq-Jd-bap" firstAttribute="width" secondItem="wPM-v7-FrO" secondAttribute="width" id="Raa-bF-QGQ"/>
+                            <constraint firstItem="7oj-xT-bU6" firstAttribute="width" secondItem="wPM-v7-FrO" secondAttribute="width" id="WYO-hc-OgL"/>
                             <constraint firstItem="HWq-Jd-bap" firstAttribute="leading" secondItem="wPM-v7-FrO" secondAttribute="leadingMargin" id="X9l-dy-0nX"/>
+                            <constraint firstItem="7oj-xT-bU6" firstAttribute="top" secondItem="o2F-VT-TLz" secondAttribute="bottom" id="eeM-d6-0J1"/>
+                            <constraint firstItem="HWq-Jd-bap" firstAttribute="width" secondItem="7oj-xT-bU6" secondAttribute="width" id="fYS-dI-k1u"/>
                             <constraint firstItem="IpA-dM-gGP" firstAttribute="top" secondItem="HWq-Jd-bap" secondAttribute="bottom" id="nQ2-jb-avT"/>
+                            <constraint firstItem="HWq-Jd-bap" firstAttribute="top" secondItem="7oj-xT-bU6" secondAttribute="bottom" id="nRk-CG-fEe"/>
+                            <constraint firstItem="HWq-Jd-bap" firstAttribute="width" secondItem="wPM-v7-FrO" secondAttribute="width" id="oKD-Kx-N5b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7oj-xT-bU6" secondAttribute="trailing" constant="-20" id="vRI-Uv-9hi"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="WYO-hc-OgL"/>
+                                <exclude reference="C0g-l2-JeG"/>
+                                <exclude reference="KAW-Tp-mox"/>
                                 <exclude reference="Raa-bF-QGQ"/>
+                                <exclude reference="X9l-dy-0nX"/>
+                                <exclude reference="oKD-Kx-N5b"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="qVN-HZ-63O"/>
                     <connections>
                         <outlet property="collectionView" destination="HWq-Jd-bap" id="baD-QA-hcR"/>
+                        <outlet property="searchBarView" destination="7oj-xT-bU6" id="e3h-Gz-GhX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THY-XE-RLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
