@@ -368,6 +368,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="exampleSubTitle" destination="Hgu-X1-1Zr" id="AFs-5M-bah"/>
                         <outlet property="exampleTitle" destination="YUa-mZ-paq" id="657-j6-Brg"/>

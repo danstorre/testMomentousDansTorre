@@ -25,15 +25,19 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     
     @IBOutlet weak var searchBarView: UISearchBar!
     
-    override func viewWillLayoutSubviews() {
-        
-        self.resultSearchController.searchBar.sizeToFit()
+    
+    override func viewWillAppear(animated: Bool) {
         fontSizeTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeyTitle)
         fontSizeSubTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeySubTitle)
         orderByName = NSUserDefaults.standardUserDefaults().boolForKey(orderByNameKey)
         createDefaultFetchRequest()
         
         collectionView.reloadData()
+    }
+    override func viewWillLayoutSubviews() {
+        
+        self.resultSearchController.searchBar.sizeToFit()
+        
     }
     
     func createDefaultFetchRequest(){
@@ -66,7 +70,7 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         // initialize search controller after the core data
         self.resultSearchController.searchResultsUpdater = self
         self.resultSearchController.dimsBackgroundDuringPresentation = false
-        
+        self.resultSearchController.searchBar.placeholder = "Search the article title here"
         searchBarView.addSubview(self.resultSearchController.searchBar)
         
         // makes the searchbar stay in the current screen and not spill into the next screen
