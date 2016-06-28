@@ -15,12 +15,41 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     
     var resultSearchController = UISearchController(searchResultsController: nil)
     
+    var fontSizeTitle : Float = 0.0
+    var fontSizeSubTitle : Float = 0.0
+    let SliderValueKeyTitle = "Slider Value Key for Font Title"
+    let SliderValueKeySubTitle = "Slider Value Key for Font SubTitle"
+    let orderByNameKey = "Order by name"
+    var orderByName = false
+    
     
     @IBOutlet weak var searchBarView: UISearchBar!
     
     override func viewWillLayoutSubviews() {
         
         self.resultSearchController.searchBar.sizeToFit()
+        fontSizeTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeyTitle)
+        fontSizeSubTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeySubTitle)
+        orderByName = NSUserDefaults.standardUserDefaults().boolForKey(orderByNameKey)
+        createDefaultFetchRequest()
+        
+        collectionView.reloadData()
+    }
+    
+    func createDefaultFetchRequest(){
+        
+        //Get the stack
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let stack = delegate.stack
+        
+        // Create a fetchrequest
+        let fr = NSFetchRequest(entityName: "Article")
+        fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: orderByName)]
+        
+        // Create the FetchedResultsController
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
+                                                              managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
     }
     
     
@@ -28,19 +57,11 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         super.viewDidLoad()
         // Set the title
         title = "Collection"
+        fontSizeTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeyTitle)
+        fontSizeSubTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeySubTitle)
+        orderByName = NSUserDefaults.standardUserDefaults().boolForKey(orderByNameKey)
         
-        // Get the stack
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let stack = delegate.stack
-        
-        // Create a fetchrequest
-        let fr = NSFetchRequest(entityName: "Article")
-        fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true),
-                              NSSortDescriptor(key: "creationDate", ascending: false)]
-        
-        // Create the FetchedResultsController
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
-                                                              managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        createDefaultFetchRequest()
         
         // initialize search controller after the core data
         self.resultSearchController.searchResultsUpdater = self
@@ -75,8 +96,10 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArticleCell", forIndexPath: indexPath) as! ArticleCollectionCell
         
 //      Sync article -> cell
-        
+        cell.titleArticle.font = cell.titleArticle.font.fontWithSize(CGFloat(fontSizeTitle))
         cell.titleArticle.text = article.articleTitle
+        
+        cell.subtitleArticle.font = cell.subtitleArticle.font.fontWithSize(CGFloat(fontSizeSubTitle))
         cell.subtitleArticle.text = article.articleSubTitle
         let image = UIImage(data: article.image!.imageData!)
         cell.imageArticle.image = image

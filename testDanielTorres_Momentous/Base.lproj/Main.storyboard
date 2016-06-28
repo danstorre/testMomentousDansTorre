@@ -123,13 +123,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="qVN-HZ-63O">
-                        <barButtonItem key="rightBarButtonItem" image="Horizontal Settings Mixer Filled" id="XC7-hn-WKQ">
-                            <connections>
-                                <segue destination="ank-7l-xFw" kind="show" identifier="settings" id="li8-40-1sU"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="qVN-HZ-63O"/>
                     <connections>
                         <outlet property="collectionView" destination="HWq-Jd-bap" id="baD-QA-hcR"/>
                         <outlet property="searchBarView" destination="7oj-xT-bU6" id="e3h-Gz-GhX"/>
@@ -547,7 +541,6 @@
         <image name="List" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D9m-ca-7DD"/>
-        <segue reference="eBd-bd-RAh"/>
+        <segue reference="cks-S1-9hg"/>
     </inferredMetricsTieBreakers>
 </document>
