@@ -400,7 +400,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="367"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleAspectFit" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eKb-Vo-RCX">
-                                                <rect key="frame" x="0.0" y="0.0" width="304" height="94"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="304" height="117"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Olk-VV-ZAS">
                                                         <rect key="frame" x="0.0" y="0.0" width="304" height="34"/>
@@ -411,15 +411,15 @@
                                                             <action selector="hideButton:" destination="B6Z-RS-aZf" eventType="touchUpInside" id="LjV-Je-6Yd"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWf-dC-jyJ">
-                                                        <rect key="frame" x="0.0" y="44" width="304" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWf-dC-jyJ">
+                                                        <rect key="frame" x="0.0" y="44" width="304" height="39"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="32"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" misplaced="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvK-Ct-fy2">
-                                                        <rect key="frame" x="0.0" y="75" width="304" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <rect key="frame" x="0.0" y="93" width="304" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -429,6 +429,8 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="eKb-Vo-RCX" secondAttribute="bottom" id="B7j-MR-uhQ"/>
+                                            <constraint firstItem="gvK-Ct-fy2" firstAttribute="leading" secondItem="ZJc-7t-OaU" secondAttribute="leading" id="Hcn-1h-bFA"/>
+                                            <constraint firstAttribute="trailing" secondItem="gvK-Ct-fy2" secondAttribute="trailing" id="OKR-Ef-6oT"/>
                                             <constraint firstItem="eKb-Vo-RCX" firstAttribute="width" secondItem="ZJc-7t-OaU" secondAttribute="width" id="PhN-nm-5OZ"/>
                                             <constraint firstItem="eKb-Vo-RCX" firstAttribute="top" secondItem="ZJc-7t-OaU" secondAttribute="top" id="TYi-ZX-fH7"/>
                                             <constraint firstItem="eKb-Vo-RCX" firstAttribute="leading" secondItem="ZJc-7t-OaU" secondAttribute="leading" id="jKs-cp-Rtr"/>
@@ -542,6 +544,6 @@
         <image name="List" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cks-S1-9hg"/>
+        <segue reference="D9m-ca-7DD"/>
     </inferredMetricsTieBreakers>
 </document>
