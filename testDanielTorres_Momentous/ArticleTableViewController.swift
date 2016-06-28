@@ -14,26 +14,49 @@ class ArticleTableViewController: CoreDataTableViewController {
 
     
     var resultSearchController = UISearchController(searchResultsController: nil)
+    var fontSizeTitle : Float = 0.0
+    var fontSizeSubTitle : Float = 0.0
+    let SliderValueKeyTitle = "Slider Value Key for Font Title"
+    let SliderValueKeySubTitle = "Slider Value Key for Font SubTitle"
+    let orderByNameKey = "Order by name"
+    var orderByName = false
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        fontSizeTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeyTitle)
+        fontSizeSubTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeySubTitle)
+        orderByName = NSUserDefaults.standardUserDefaults().boolForKey(orderByNameKey)
+        createDefaultFetchRequest()
+       
+        tableView.reloadData()
+    }
+    
+    func createDefaultFetchRequest(){
         
-        
-        // Set the title
-        title = "Table"
-        
-        // Get the stack
+        //Get the stack
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let stack = delegate.stack
         
         // Create a fetchrequest
         let fr = NSFetchRequest(entityName: "Article")
-        fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true),
-                              NSSortDescriptor(key: "creationDate", ascending: false)]
+        fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: orderByName)]
         
         // Create the FetchedResultsController
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+    
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        // Set the title & Size fonts
+        title = "Table"
+        fontSizeTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeyTitle)
+        fontSizeSubTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeySubTitle)
+        orderByName = NSUserDefaults.standardUserDefaults().boolForKey(orderByNameKey)
+        
+        createDefaultFetchRequest()
         
         // initialize search controller after the core data
         self.resultSearchController.searchResultsUpdater = self
@@ -69,7 +92,11 @@ class ArticleTableViewController: CoreDataTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ArticleCell", forIndexPath: indexPath)
         
         // Sync article -> cell
+        cell.textLabel?.font = cell.textLabel?.font.fontWithSize(CGFloat(fontSizeTitle))
         cell.textLabel?.text = article.articleTitle
+        
+        
+        cell.detailTextLabel?.font = cell.textLabel?.font.fontWithSize(CGFloat(fontSizeSubTitle))
         cell.detailTextLabel?.text = article.articleSubTitle
         let image = UIImage(data: article.image!.imageData!)
         cell.imageView?.image = image
@@ -78,7 +105,8 @@ class ArticleTableViewController: CoreDataTableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
         
         if let context = fetchedResultsController?.managedObjectContext,
             article = fetchedResultsController?.objectAtIndexPath(indexPath) as? Article
@@ -136,8 +164,7 @@ extension ArticleTableViewController: UISearchResultsUpdating {
         else {
             
             
-            fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true),
-                                  NSSortDescriptor(key: "creationDate", ascending: false)]
+            fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: orderByName)]
             
         }
         

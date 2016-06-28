@@ -11,6 +11,7 @@
 		FB08D2401D2086CD00A88C08 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D23F1D2086CD00A88C08 /* CoreDataTableViewController.swift */; };
 		FB08D2461D2087DB00A88C08 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */; };
 		FB08D24C1D208F1500A88C08 /* DetailArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08D24B1D208F1500A88C08 /* DetailArticleViewController.swift */; };
+		FB15D2481D2245E7000F42DF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB15D2471D2245E7000F42DF /* SettingsViewController.swift */; };
 		FB1AD6DD1D20B7A500C1829B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1AD6DB1D20B79900C1829B /* Alamofire.framework */; };
 		FB1AD6DE1D20B7A500C1829B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB1AD6DB1D20B79900C1829B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB1AD6E21D20BA9800C1829B /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1AD6E01D20BA9200C1829B /* AlamofireImage.framework */; };
@@ -117,6 +118,7 @@
 		FB08D23F1D2086CD00A88C08 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		FB08D24B1D208F1500A88C08 /* DetailArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailArticleViewController.swift; sourceTree = "<group>"; };
+		FB15D2471D2245E7000F42DF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FB1AD6DB1D20B79900C1829B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		FB1AD6E01D20BA9200C1829B /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = "<group>"; };
 		FB1AD6F21D20D7D900C1829B /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				FB08D2451D2087DB00A88C08 /* ArticleTableViewController.swift */,
 				FBE1DA3E1D217FD600E79D6D /* ArticleCollectionViewController.swift */,
 				FB08D24B1D208F1500A88C08 /* DetailArticleViewController.swift */,
+				FB15D2471D2245E7000F42DF /* SettingsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				FB08D24C1D208F1500A88C08 /* DetailArticleViewController.swift in Sources */,
 				FB08D2401D2086CD00A88C08 /* CoreDataTableViewController.swift in Sources */,
 				FB1AD6F51D20D81000C1829B /* Router.swift in Sources */,
+				FB15D2481D2245E7000F42DF /* SettingsViewController.swift in Sources */,
 				FBE1DA421D21883C00E79D6D /* ArticleCollectionCell.swift in Sources */,
 				FB08D23E1D20868600A88C08 /* CoreDataStack.swift in Sources */,
 				FBE1DA321D215D2900E79D6D /* ImageArticle.swift in Sources */,

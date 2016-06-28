@@ -17,6 +17,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let stack = CoreDataStack(modelName: "Model")!
     let connectionManager : ConnectionManager = ConnectionManager()
     
+    
+    func checkIfFirstLaunch(){
+        
+        
+        if (NSUserDefaults.standardUserDefaults().boolForKey("HasLaunchedBefore")){
+            print("nothing to do - App has launched before")
+        }
+        else
+        {
+            print("this is first launch")
+            
+            eraseData()
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
+                self.backgroundLoad()
+            }
+            
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedBefore")
+            NSUserDefaults.standardUserDefaults().setFloat(16, forKey: "Slider Value Key for Font Title")
+            NSUserDefaults.standardUserDefaults().setFloat(11, forKey: "Slider Value Key for Font SubTitle")
+            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "Order by name")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+        
+    }
+    
     func eraseData(){
         
         // Remove previous stuff (if any)
@@ -75,17 +101,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        checkIfFirstLaunch()
+       
         
-       // eraseData()
-
-        // Start Autosaving by seconds
-       // stack.autoSave(5)
-        
-        // add new objects in the background from web in 2 seconds after the app launch
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
-//            self.backgroundLoad()
-//        }
-        
+        // Start Autosaving every 5 seconds
+        stack.autoSave(5)
         
         
         return true

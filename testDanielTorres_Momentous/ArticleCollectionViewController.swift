@@ -16,14 +16,13 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     var resultSearchController = UISearchController(searchResultsController: nil)
     
     
-    
     @IBOutlet weak var searchBarView: UISearchBar!
     
     override func viewWillLayoutSubviews() {
         
         self.resultSearchController.searchBar.sizeToFit()
     }
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +46,7 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         self.resultSearchController.searchResultsUpdater = self
         self.resultSearchController.dimsBackgroundDuringPresentation = false
         
-        
         searchBarView.addSubview(self.resultSearchController.searchBar)
-        
         
         // makes the searchbar stay in the current screen and not spill into the next screen
         definesPresentationContext = true
