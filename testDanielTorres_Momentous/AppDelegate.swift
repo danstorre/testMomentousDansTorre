@@ -101,8 +101,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        checkIfFirstLaunch()
-       
+        //checkIfFirstLaunch()
+        eraseData()
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
+            self.backgroundLoad()
+        }
         
         // Start Autosaving every 5 seconds
         stack.autoSave(5)

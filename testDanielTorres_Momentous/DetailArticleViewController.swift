@@ -19,8 +19,30 @@ class DetailArticleViewController: UIViewController {
     @IBOutlet weak var buttonImage: UIButton!
     
     @IBOutlet weak var stackView: UIStackView!
+    
+    
+    
+    
+    func  addGesturesToLabel(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DetailArticleViewController.showImage(_:)))
+        articleTitleUI.userInteractionEnabled = true
+        articleAboutUI.userInteractionEnabled = true
+        articleTitleUI.addGestureRecognizer(tapGesture)
+        articleAboutUI.addGestureRecognizer(tapGesture)
+    }
+
+    func showImage(sender:UITapGestureRecognizer){
+        if self.buttonImage.hidden {
+        UIView.animateWithDuration(0.4){
+            self.buttonImage.hidden = false
+        }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addGesturesToLabel()
         
         
         if let title = article?.articleTitle{

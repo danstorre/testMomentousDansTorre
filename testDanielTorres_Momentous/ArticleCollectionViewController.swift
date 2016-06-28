@@ -54,6 +54,8 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
         
+        
+        
     }
     
     
