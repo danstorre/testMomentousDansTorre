@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "testDanielTorres_Momentous/ArticleTableViewController.swift"
-            timestampString = "488769876.913842"
+            timestampString = "488773868.07727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "updateSearchResultsForSearchController(_:)"
             landmarkType = "5">
          </BreakpointContent>

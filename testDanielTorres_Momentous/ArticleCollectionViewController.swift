@@ -12,6 +12,14 @@ import CoreData
 
 class ArticleCollectionViewController: CoreDataCollectionViewController {
 
+    
+    var resultSearchController = UISearchController(searchResultsController: nil)
+    
+    
+    
+    @IBOutlet weak var searchBarView: UISearchBar!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the title
@@ -29,6 +37,19 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         // Create the FetchedResultsController
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // initialize search controller after the core data
+        self.resultSearchController.searchResultsUpdater = self
+        self.resultSearchController.dimsBackgroundDuringPresentation = false
+        self.resultSearchController.searchBar.sizeToFit()
+        
+        // places the built-in searchbar into the header of the table
+        self.resultSearchController.searchBar.placeholder = "Search the article title here"
+ 
+        searchBarView.addSubview(self.resultSearchController.searchBar)
+        
+        // makes the searchbar stay in the current screen and not spill into the next screen
+        definesPresentationContext = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +66,9 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func collectionView(collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: NSIndexPath) {
+        searchBarView.subviews[0].sizeToFit()
+    }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // Find the right notebook for this indexpath
@@ -61,8 +85,6 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         cell.imageArticle.image = image
         
         return cell// Find the right notebook for this indexpath
-        
-    
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -78,7 +100,6 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
                 
                 // Inject the article
                 articleDetailVC.article = article
-                
             }
         }
     }
@@ -86,3 +107,44 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     
 
 }
+
+extension ArticleCollectionViewController: UISearchResultsUpdating {
+    // updates the table view with the search results as user is typing...
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
+        // process the search string, remove leading and trailing spaces
+        let searchText = searchController.searchBar.text!
+        let trimmedSearchString = searchText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        
+        
+        let fr = NSFetchRequest(entityName: "Article")
+        
+        // if search string is not blank
+        if !trimmedSearchString.isEmpty {
+            
+            // form the search format
+            let predicate = NSPredicate(format: "(articleTitle contains [cd] %@)", trimmedSearchString)
+            
+            // add the search filter
+            fr.predicate = predicate
+            fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true)]
+        }
+        else {
+            
+            
+            fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true),
+                                  NSSortDescriptor(key: "creationDate", ascending: false)]
+            
+        }
+        
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
+                                                              managedObjectContext:fetchedResultsController!.managedObjectContext,
+                                                              sectionNameKeyPath: nil,
+                                                              cacheName: nil)
+        
+        // refresh the table view
+        self.collectionView!.reloadData()
+    }
+}
+

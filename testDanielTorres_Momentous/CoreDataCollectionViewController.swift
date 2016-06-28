@@ -11,8 +11,10 @@ import CoreData
 
 private let reuseIdentifier = "ArticleCell"
 
-class CoreDataCollectionViewController: UICollectionViewController {
+class CoreDataCollectionViewController: UIViewController {
 
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK:  - Properties
     var fetchedResultsController : NSFetchedResultsController? {
@@ -25,10 +27,9 @@ class CoreDataCollectionViewController: UICollectionViewController {
         }
     }
     
-    init(fetchedResultsController fc : NSFetchedResultsController,
-                                  collectionViewLayout : UICollectionViewLayout){
+    init?(fetchedResultsController fc : NSFetchedResultsController, coder aDecoder: NSCoder){
         fetchedResultsController = fc
-         super.init(collectionViewLayout: collectionViewLayout)
+        super.init(coder: aDecoder)
     }
     
     // Do not worry about this initializer. I has to be implemented
@@ -55,69 +56,10 @@ class CoreDataCollectionViewController: UICollectionViewController {
     }
     */
 
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        if let fc = fetchedResultsController{
-            return (fc.sections?.count)!;
-        }else{
-            return 0
-        }
-    }
-
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        if let fc = fetchedResultsController{
-            return fc.sections![section].numberOfObjects;
-        }else{
-            return 0
-        }
-    }
-
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
-    }
-    */
 
 }
 
-extension CoreDataCollectionViewController{
-    
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        fatalError("This method MUST be implemented by a subclass of CoreDataTableViewController")
-        
-    }
-}
 
 extension CoreDataCollectionViewController{
     
@@ -130,6 +72,37 @@ extension CoreDataCollectionViewController{
             }
         }
     }
+}
+
+extension CoreDataCollectionViewController: UICollectionViewDelegate {
+    
+    // MARK: UICollectionViewDataSource
+    
+     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        if let fc = fetchedResultsController{
+            return (fc.sections?.count)!;
+        }else{
+            return 0
+        }
+    }
+    
+    
+     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        if let fc = fetchedResultsController{
+            return fc.sections![section].numberOfObjects;
+        }else{
+            return 0
+        }
+    }
+    
+     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        fatalError("This method MUST be implemented by a subclass of CoreDataTableViewController")
+        
+    }
+
 }
 
 // MARK:  - Delegate

@@ -13,7 +13,7 @@ import CoreData
 class ArticleTableViewController: CoreDataTableViewController {
 
     
-    
+    var resultSearchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,16 @@ class ArticleTableViewController: CoreDataTableViewController {
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
         
-
+        // initialize search controller after the core data
+        self.resultSearchController.searchResultsUpdater = self
+        self.resultSearchController.dimsBackgroundDuringPresentation = false
+        self.resultSearchController.searchBar.sizeToFit()
+        
+        // places the built-in searchbar into the header of the table
+        self.resultSearchController.searchBar.placeholder = "Search the article title here"
+        self.tableView.tableHeaderView = self.resultSearchController.searchBar
+        
+        
         // makes the searchbar stay in the current screen and not spill into the next screen
         definesPresentationContext = true
     }
@@ -122,8 +131,7 @@ extension ArticleTableViewController: UISearchResultsUpdating {
             
             // add the search filter
             fr.predicate = predicate
-            fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true),
-                                  NSSortDescriptor(key: "creationDate", ascending: false)]
+            fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true)]
         }
         else {
             
