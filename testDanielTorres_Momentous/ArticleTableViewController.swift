@@ -88,7 +88,9 @@ class ArticleTableViewController: CoreDataTableViewController {
     func refresh(){
         
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        delegate.eraseData()
         delegate.runBackGroundRequestWebService()
+        
         
         refreshButton.customView!.transform = CGAffineTransformMakeRotation(CGFloat(M_PI * 6/5))
         UIView.animateWithDuration(1.0) {

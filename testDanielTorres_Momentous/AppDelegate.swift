@@ -28,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             print("this is first launch")
             
+            eraseData()
+            
+            runBackGroundRequestWebService()
+            
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedBefore")
             NSUserDefaults.standardUserDefaults().setFloat(16, forKey: "Slider Value Key for Font Title")
             NSUserDefaults.standardUserDefaults().setFloat(11, forKey: "Slider Value Key for Font SubTitle")
@@ -107,9 +111,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         checkIfFirstLaunch()
         
-        eraseData()
-        
-        runBackGroundRequestWebService()
         
         // Start Autosaving every 5 seconds
         stack.autoSave(5)
