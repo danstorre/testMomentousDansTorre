@@ -20,3 +20,8 @@ There is a button refresh that is more like requesting the service again so the 
 stored in core data. I didn't wanted to put a button that drops the db, more like Instagram, the app deletes a single 
 or a bunch of articles selected by the user. 
 
+# Configuration
+
+The deployment target is 9.3, tested and stable app in Xcode Version 7.3.1
+
+There is no need for further configuration just run the app and that's it!
