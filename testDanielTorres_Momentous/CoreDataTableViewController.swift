@@ -14,8 +14,6 @@ class CoreDataTableViewController: UITableViewController {
     // MARK:  - Properties
     var fetchedResultsController : NSFetchedResultsController?{
         didSet{
-            // Whenever the frc changes, we execute the search and
-            // reload the table
             fetchedResultsController?.delegate = self
             executeSearch()
             tableView.reloadData()
@@ -26,8 +24,6 @@ class CoreDataTableViewController: UITableViewController {
                                   style : UITableViewStyle = .Plain){
         fetchedResultsController = fc
         super.init(style: style)
-        
-        
     }
     
     // Do not worry about this initializer. I has to be implemented
@@ -97,7 +93,7 @@ extension CoreDataTableViewController{
     
 }
 
-// MARK:  - Fetches
+// MARK:  - executeSearch CoreDataTableViewController
 extension CoreDataTableViewController{
     
     func executeSearch(){
@@ -112,7 +108,7 @@ extension CoreDataTableViewController{
 }
 
 
-// MARK:  - Delegate
+// MARK:  - NSFetchedResultsControllerDelegate
 extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
     
     
@@ -136,7 +132,7 @@ extension CoreDataTableViewController: NSFetchedResultsControllerDelegate{
             tableView.deleteSections(set, withRowAnimation: .Fade)
             
         default:
-            // irrelevant in our case
+            
             break
             
         }

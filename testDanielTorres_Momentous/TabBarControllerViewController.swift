@@ -12,18 +12,17 @@ let noInternetKey = "NoInternetKey"
 
 class TabBarControllerViewController: UITabBarController {
 
-    
-    //This strings could be placed in a localizable strings file. They're not because it's just a simple app.
+    // MARK: - Properties
+    //These strings could be placed in a localizable strings file. They're not because it's just a simple app.
     let alertTitle  = "Alert"
     let messageAlertNoInternet  = "Please check your internet connection"
-    let okButton = "Yes"
+    let okButton = "Ok"
     let noButton = "No"
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //When there is no internet the method noInternetAlert() is called
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TabBarControllerViewController.noInternetAlert), name: noInternetKey, object: nil)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,14 +36,5 @@ class TabBarControllerViewController: UITabBarController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

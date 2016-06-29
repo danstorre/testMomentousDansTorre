@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    
+    // MARK: - Properties
     let SliderValueKeyTitle = "Slider Value Key for Font Title"
     let SliderValueKeySubTitle = "Slider Value Key for Font SubTitle"
     let orderByNameKey = "Order by name"
@@ -21,6 +21,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var exampleTitle: UILabel!
     @IBOutlet weak var exampleSubTitle: UILabel!
     
+    
+    // MARK: - default UIViewController Methods
     override func viewWillAppear(animated: Bool) {
         exampleTitle.font = exampleTitle.font.fontWithSize(CGFloat(sliderTitle.value))
         exampleSubTitle.font = exampleSubTitle.font.fontWithSize(CGFloat(sliderSubTitle.value))
@@ -32,13 +34,15 @@ class SettingsViewController: UIViewController {
         sliderTitle.value = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeyTitle)
         sliderSubTitle.value = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeySubTitle)
         switchButton.on = NSUserDefaults.standardUserDefaults().boolForKey(orderByNameKey)
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Slider and Switch methods
     
     @IBAction func didChangeSliderTitle(sender: UISlider) {
         NSUserDefaults.standardUserDefaults().setFloat(sliderTitle.value, forKey: SliderValueKeyTitle)
@@ -55,14 +59,5 @@ class SettingsViewController: UIViewController {
         
         NSUserDefaults.standardUserDefaults().setBool(switchButton.on, forKey: orderByNameKey)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

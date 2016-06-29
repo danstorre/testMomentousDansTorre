@@ -12,35 +12,23 @@ import Alamofire
 
 class DetailArticleViewController: UIViewController {
 
+    // MARK: - Properties
     var article : Article?
     
-    //This strings could be placed in a localizable strings file. They're not because it's just a simple app.
+    //These strings could be placed in a localizable strings file. They're not because it's just a simple app.
     let alertTitle  = "Alert"
     let messageAlert  = "Are you sure you want to delete this item?"
     let okButton = "Yes"
     let noButton = "No"
     
-
     @IBOutlet weak var articleTitleUI: UILabel!
     @IBOutlet weak var articleAboutUI: UILabel!
     @IBOutlet weak var buttonImage: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     
+
     
-    @IBAction func deleteButton(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: alertTitle, message: messageAlert, preferredStyle: .Alert)
-        
-        let okAction = UIAlertAction(title: okButton, style: .Destructive) {
-            UIAlertAction in
-            self.deleteArticle()
-            self.navigationController?.popViewControllerAnimated(true)
-        }
-        alertController.addAction(okAction)
-        alertController.addAction(UIAlertAction(title: noButton, style: .Default, handler: nil))
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    
+    // MARK: - Default Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,13 +44,25 @@ class DetailArticleViewController: UIViewController {
             buttonImage.setImage(image, forState: .Normal)
         }
         
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Button Methods
+    @IBAction func deleteButton(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: alertTitle, message: messageAlert, preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: okButton, style: .Destructive) {
+            UIAlertAction in
+            self.deleteArticle()
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(UIAlertAction(title: noButton, style: .Default, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
 
@@ -75,6 +75,7 @@ class DetailArticleViewController: UIViewController {
     }
     
     
+    // MARK: - Methods
     func deleteArticle(){
         //Get the stack
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -89,8 +90,6 @@ class DetailArticleViewController: UIViewController {
         articleAboutUI.userInteractionEnabled = true
         articleTitleUI.addGestureRecognizer(tapGesture)
         articleAboutUI.addGestureRecognizer(tapGesture)
-        
-        
     }
     
     func showImage(sender:UITapGestureRecognizer){
@@ -101,15 +100,6 @@ class DetailArticleViewController: UIViewController {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     
     

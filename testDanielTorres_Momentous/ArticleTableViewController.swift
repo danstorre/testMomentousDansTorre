@@ -12,6 +12,8 @@ import CoreData
 
 class ArticleTableViewController: CoreDataTableViewController {
 
+    
+    // MARK: - Properties
     @IBOutlet weak var refreshButton: UIBarButtonItem!{
         didSet {
             let icon = UIImage(named: "Refresh")
@@ -32,6 +34,8 @@ class ArticleTableViewController: CoreDataTableViewController {
     let orderByNameKey = "Order by name"
     var orderByName = false
     
+    
+    // MARK: - Default Methods
     override func viewWillAppear(animated: Bool) {
         fontSizeTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeyTitle)
         fontSizeSubTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeySubTitle)
@@ -41,23 +45,7 @@ class ArticleTableViewController: CoreDataTableViewController {
         tableView.reloadData()
     }
     
-    func createDefaultFetchRequest(){
-        
-        //Get the stack
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let stack = delegate.stack
-        
-        
-        // Create a fetchrequest
-        let fr = NSFetchRequest(entityName: "Article")
-        fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: orderByName)]
-        
-        // Create the FetchedResultsController
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
-                                                              managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
     
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,19 +71,6 @@ class ArticleTableViewController: CoreDataTableViewController {
         
         // makes the searchbar stay in the current screen and not spill into the next screen
         definesPresentationContext = true
-    }
-    
-    func refresh(){
-        
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        delegate.runBackGroundRequestWebService()
-        
-        
-        refreshButton.customView!.transform = CGAffineTransformMakeRotation(CGFloat(M_PI * 6/5))
-        UIView.animateWithDuration(1.0) {
-            self.refreshButton.customView!.transform = CGAffineTransformIdentity
-        }
-        
     }
     
     
@@ -146,9 +121,7 @@ class ArticleTableViewController: CoreDataTableViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
+
         if segue.identifier! == "detailArticle"{
             
             if let articleDetailVC = segue.destinationViewController as? DetailArticleViewController{
@@ -156,52 +129,71 @@ class ArticleTableViewController: CoreDataTableViewController {
                 let indexPath = tableView.indexPathForSelectedRow!
                 let article = fetchedResultsController?.objectAtIndexPath(indexPath) as? Article
                 
-                // Inject the article
                 articleDetailVC.article = article
                 
             }
         }
     }
     
+    // MARK: - Util Methods
+    func createDefaultFetchRequest(){
+        
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let stack = delegate.stack
+        
+        let fr = NSFetchRequest(entityName: "Article")
+        fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: orderByName)]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
+                                                              managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+    }
     
+    func refresh(){
+        
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        delegate.runBackGroundRequestWebService()
+        
+        
+        refreshButton.customView!.transform = CGAffineTransformMakeRotation(CGFloat(M_PI * 6/5))
+        UIView.animateWithDuration(1.0) {
+            self.refreshButton.customView!.transform = CGAffineTransformIdentity
+        }
+        
+    }
+    
+   
     
 }
 
+
+// MARK: - UISearchResultsUpdating Methods
+
 extension ArticleTableViewController: UISearchResultsUpdating {
-    // updates the table view with the search results as user is typing...
+    
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         
-        // process the search string, remove leading and trailing spaces
         let searchText = searchController.searchBar.text!
         let trimmedSearchString = searchText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        
-        
         let fr = NSFetchRequest(entityName: "Article")
         
-        // if search string is not blank
         if !trimmedSearchString.isEmpty {
             
-            // form the search format
             let predicate = NSPredicate(format: "(articleTitle contains [cd] %@)", trimmedSearchString)
-            
-            // add the search filter
             fr.predicate = predicate
             fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true)]
         }
         else {
-            
-            
+    
             fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: orderByName)]
             
         }
-        
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext:fetchedResultsController!.managedObjectContext,
                                                               sectionNameKeyPath: nil,
                                                               cacheName: nil)
-        
-        // refresh the table view
         self.tableView.reloadData()
     }
 }

@@ -34,9 +34,6 @@ class CoreDataCollectionViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    // Do not worry about this initializer. I has to be implemented
-    // because of the way Swift interfaces with an Objective C
-    // protocol called NSArchiving. It's not relevant.
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -45,21 +42,12 @@ class CoreDataCollectionViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     
 
 }
 
-
+// MARK: - executeSearch CoreDataCollectionViewController
 extension CoreDataCollectionViewController{
     
     func executeSearch(){
@@ -114,7 +102,7 @@ extension CoreDataCollectionViewController: UICollectionViewDelegate {
 
 }
 
-// MARK:  - Delegate
+// MARK:  - NSFetchedResultsControllerDelegate
 extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate{
 
     

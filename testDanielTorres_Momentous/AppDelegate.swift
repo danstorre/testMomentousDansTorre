@@ -13,13 +13,13 @@ import Alamofire
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: - Properties
     var window: UIWindow?
     let stack = CoreDataStack(modelName: "Model")!
     let connectionManager : ConnectionManager = ConnectionManager()
     
-    
+    // MARK: - Utils
     func checkIfFirstLaunch(){
-        
         
         if (NSUserDefaults.standardUserDefaults().boolForKey("HasLaunchedBefore")){
             print("nothing to do - App has launched before")
@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             runBackGroundRequestWebService()
             
+            //set key settings for future save
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedBefore")
             NSUserDefaults.standardUserDefaults().setFloat(16, forKey: "Slider Value Key for Font Title")
             NSUserDefaults.standardUserDefaults().setFloat(11, forKey: "Slider Value Key for Font SubTitle")
@@ -51,9 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Error droping all objects in DB")
         }
         
-        
     }
-    
+    // MARK: - Web Services
+    // This is for taking the image from the web 
     func consultWebServicesForImage(article : ArticleWS){
         Alamofire.request(.GET, article.articleImage!)
             .responseImage { response in
@@ -68,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
         }
     }
-    
+    //Request data from web in the background
     func backgroundLoad(){
             stack.performBackgroundBatchOperation { (workerContext) in
             self.connectionManager.requestArticles({ (response, error) -> Void in
@@ -106,6 +107,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName(noInternetKey, object: self)
         }
     }
+    
+    // MARK: - AppDelegate Methods
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

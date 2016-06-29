@@ -12,7 +12,7 @@ import CoreData
 
 class ArticleCollectionViewController: CoreDataCollectionViewController {
 
-    
+    // MARK: - Properties
     var resultSearchController = UISearchController(searchResultsController: nil)
     
     var fontSizeTitle : Float = 0.0
@@ -25,7 +25,7 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     
     @IBOutlet weak var searchBarView: UISearchBar!
     
-    
+    // MARK: - Default Methods
     override func viewWillAppear(animated: Bool) {
         fontSizeTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeyTitle)
         fontSizeSubTitle = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKeySubTitle)
@@ -34,30 +34,12 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         
         collectionView.reloadData()
     }
+    
     override func viewWillLayoutSubviews() {
         
         self.resultSearchController.searchBar.sizeToFit()
         
     }
-    
-    func createDefaultFetchRequest(){
-        
-        //Get the stack
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let stack = delegate.stack
-        
-        // Create a fetchrequest
-        let fr = NSFetchRequest(entityName: "Article")
-        fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: orderByName)]
-        
-        // Create the FetchedResultsController
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
-                                                              managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        
-        
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,33 +66,49 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
     
-    // MARK:- Editing
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         collectionView?.allowsMultipleSelection = editing
         collectionView?.reloadData()
     }
 
+    // MARK: - Util Methods
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        UIView.animateWithDuration(0.4){
+            self.resultSearchController.searchBar.sizeToFit()
+        }
+        
+    }
+    
+    func createDefaultFetchRequest(){
+        
+        //Get the stack
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let stack = delegate.stack
+        
+        // Create a fetchrequest
+        let fr = NSFetchRequest(entityName: "Article")
+        fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: orderByName)]
+        
+        // Create the FetchedResultsController
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
+                                                              managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+    }
+
+    
+    
+    // MARK: - collectionView Methods
+
+    
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        // Find the right notebook for this indexpath
         let article = fetchedResultsController!.objectAtIndexPath(indexPath) as! Article
         
-        // Create the cell
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArticleCell", forIndexPath: indexPath) as! ArticleCollectionCell
         
         cell.deleteIcon.hidden = !editing
-//      Sync article -> cell
+
         cell.titleArticle.font = cell.titleArticle.font.fontWithSize(CGFloat(fontSizeTitle))
         cell.titleArticle.text = article.articleTitle
         
@@ -120,16 +118,15 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         let image = UIImage(data: article.image!.imageData!)
         cell.imageArticle.image = image
         
-        return cell// Find the right notebook for this indexpath
+        return cell
     }
     
+    // MARK: - Navigation
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         return !editing
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         if segue.identifier! == "detailArticle"{
             
@@ -138,39 +135,30 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
                 let indexPath = collectionView?.indexPathsForSelectedItems()
                 let article = fetchedResultsController?.objectAtIndexPath(indexPath![0]) as? Article
                 
-                // Inject the article
                 articleDetailVC.article = article
             }
         }
     }
 
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        UIView.animateWithDuration(0.4){
-            self.resultSearchController.searchBar.sizeToFit()
-        }
-        
-    }
-
 }
 
+// MARK: - UISearchResultsUpdating Methods
+
 extension ArticleCollectionViewController: UISearchResultsUpdating {
-    // updates the table view with the search results as user is typing...
+    
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         
-        // process the search string, remove leading and trailing spaces
+        
         let searchText = searchController.searchBar.text!
         let trimmedSearchString = searchText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
         
         let fr = NSFetchRequest(entityName: "Article")
         
-        // if search string is not blank
         if !trimmedSearchString.isEmpty {
             
-            // form the search format
+        
             let predicate = NSPredicate(format: "(articleTitle contains [cd] %@)", trimmedSearchString)
-            
-            // add the search filter
             fr.predicate = predicate
             fr.sortDescriptors = [NSSortDescriptor(key: "articleTitle", ascending: true)]
         }
@@ -188,7 +176,6 @@ extension ArticleCollectionViewController: UISearchResultsUpdating {
                                                               sectionNameKeyPath: nil,
                                                               cacheName: nil)
         
-        // refresh the table view
         self.collectionView!.reloadData()
     }
 }
