@@ -12,6 +12,17 @@ import CoreData
 
 class ArticleTableViewController: CoreDataTableViewController {
 
+    @IBOutlet weak var refreshButton: UIBarButtonItem!{
+        didSet {
+            let icon = UIImage(named: "Refresh")
+            let iconSize = CGRect(origin: CGPointZero, size: icon!.size)
+            let iconButton = UIButton(frame: iconSize)
+            iconButton.setBackgroundImage(icon, forState: .Normal)
+            refreshButton.customView = iconButton
+            
+            iconButton.addTarget(self, action: #selector(ArticleTableViewController.refresh), forControlEvents: .TouchUpInside)
+        }
+    }
     
     var resultSearchController = UISearchController(searchResultsController: nil)
     var fontSizeTitle : Float = 0.0
@@ -74,12 +85,16 @@ class ArticleTableViewController: CoreDataTableViewController {
         definesPresentationContext = true
     }
     
-    
-    
-    @IBAction func refresh(sender: AnyObject) {
+    func refresh(){
         
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
         delegate.runBackGroundRequestWebService()
+        
+        refreshButton.customView!.transform = CGAffineTransformMakeRotation(CGFloat(M_PI * 6/5))
+        UIView.animateWithDuration(1.0) {
+            self.refreshButton.customView!.transform = CGAffineTransformIdentity
+        }
+        
     }
     
     

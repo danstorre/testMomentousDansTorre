@@ -204,17 +204,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="E21-i5-zx3">
-                        <barButtonItem key="leftBarButtonItem" image="Refresh" id="0R2-it-RIt">
-                            <connections>
-                                <action selector="refresh:" destination="qfo-a9-tLx" id="jya-AD-a4j"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" image="Refresh" id="0R2-it-RIt"/>
                         <barButtonItem key="rightBarButtonItem" image="Horizontal Settings Mixer Filled" id="YPu-zy-PdX">
                             <connections>
                                 <segue destination="ank-7l-xFw" kind="show" identifier="settings" id="eBd-bd-RAh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="refreshButton" destination="0R2-it-RIt" id="Zcx-Wc-Z0I"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1qS-eI-kIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
