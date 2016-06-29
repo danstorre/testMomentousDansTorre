@@ -113,15 +113,12 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
 //      Sync article -> cell
         cell.titleArticle.font = cell.titleArticle.font.fontWithSize(CGFloat(fontSizeTitle))
         cell.titleArticle.text = article.articleTitle
-        cell.titleArticle.userInteractionEnabled = !editing
         
         cell.subtitleArticle.font = cell.subtitleArticle.font.fontWithSize(CGFloat(fontSizeSubTitle))
         cell.subtitleArticle.text = article.articleSubTitle
-        cell.subtitleArticle.userInteractionEnabled = !editing
         
         let image = UIImage(data: article.image!.imageData!)
         cell.imageArticle.image = image
-        cell.imageArticle.userInteractionEnabled = !editing
         
         return cell// Find the right notebook for this indexpath
     }
