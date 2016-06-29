@@ -88,7 +88,6 @@ class ArticleTableViewController: CoreDataTableViewController {
     func refresh(){
         
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        delegate.eraseData()
         delegate.runBackGroundRequestWebService()
         
         
