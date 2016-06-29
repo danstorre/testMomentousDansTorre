@@ -24,6 +24,7 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     
     
     @IBOutlet weak var searchBarView: UISearchBar!
+    @IBOutlet weak var editingToolBar: UIToolbar!
     
     
     override func viewWillAppear(animated: Bool) {
@@ -69,6 +70,8 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         
         createDefaultFetchRequest()
         
+        editingToolBar.hidden = true
+        navigationItem.leftBarButtonItem = editButtonItem()
         // initialize search controller after the core data
         self.resultSearchController.searchResultsUpdater = self
         self.resultSearchController.dimsBackgroundDuringPresentation = false
@@ -94,6 +97,21 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     }
     */
     
+    // MARK:- Editing
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        collectionView?.allowsMultipleSelection = editing
+        editingToolBar.hidden = !editing
+    }
+    
+    @IBAction func deleteItems(sender: UIBarButtonItem) {
+        let indexpaths = collectionView?.indexPathsForSelectedItems()
+        
+        if let indexpaths = indexpaths {
+            collectionView?.deleteItemsAtIndexPaths(indexpaths)
+        }
+    }
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // Find the right notebook for this indexpath
         let article = fetchedResultsController!.objectAtIndexPath(indexPath) as! Article
@@ -111,6 +129,10 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         cell.imageArticle.image = image
         
         return cell// Find the right notebook for this indexpath
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        return !editing
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

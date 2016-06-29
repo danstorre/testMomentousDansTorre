@@ -90,6 +90,17 @@
                                     <outlet property="delegate" destination="fAu-CR-T6B" id="4nt-y4-POi"/>
                                 </connections>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gzn-si-kJf">
+                                <rect key="frame" x="-4" y="387" width="328" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yyL-wy-aML"/>
+                                    <barButtonItem image="Delete" id="6cW-RM-kqL">
+                                        <connections>
+                                            <action selector="deleteItems:" destination="fAu-CR-T6B" id="F7G-Ga-FCf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -98,10 +109,13 @@
                             <constraint firstItem="HWq-Jd-bap" firstAttribute="leading" secondItem="7oj-xT-bU6" secondAttribute="leading" id="Gbk-xw-H9E"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HWq-Jd-bap" secondAttribute="trailing" id="KAW-Tp-mox"/>
                             <constraint firstItem="7oj-xT-bU6" firstAttribute="leading" secondItem="wPM-v7-FrO" secondAttribute="leadingMargin" constant="-20" id="M6C-mH-qS9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gzn-si-kJf" secondAttribute="trailing" constant="-20" id="Qcd-qO-Nbl"/>
                             <constraint firstItem="HWq-Jd-bap" firstAttribute="width" secondItem="wPM-v7-FrO" secondAttribute="width" id="Raa-bF-QGQ"/>
                             <constraint firstItem="7oj-xT-bU6" firstAttribute="width" secondItem="wPM-v7-FrO" secondAttribute="width" id="WYO-hc-OgL"/>
                             <constraint firstItem="HWq-Jd-bap" firstAttribute="leading" secondItem="wPM-v7-FrO" secondAttribute="leadingMargin" id="X9l-dy-0nX"/>
+                            <constraint firstItem="IpA-dM-gGP" firstAttribute="top" secondItem="Gzn-si-kJf" secondAttribute="bottom" id="XzJ-cc-xTs"/>
                             <constraint firstItem="HWq-Jd-bap" firstAttribute="leading" secondItem="wPM-v7-FrO" secondAttribute="leadingMargin" id="bOW-EF-UHK"/>
+                            <constraint firstItem="Gzn-si-kJf" firstAttribute="leading" secondItem="wPM-v7-FrO" secondAttribute="leadingMargin" constant="-20" id="buh-sq-N9i"/>
                             <constraint firstItem="7oj-xT-bU6" firstAttribute="top" secondItem="o2F-VT-TLz" secondAttribute="bottom" id="eeM-d6-0J1"/>
                             <constraint firstItem="HWq-Jd-bap" firstAttribute="width" secondItem="7oj-xT-bU6" secondAttribute="width" id="fYS-dI-k1u"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HWq-Jd-bap" secondAttribute="trailing" id="hjk-XE-TJB"/>
@@ -126,6 +140,7 @@
                     <navigationItem key="navigationItem" id="qVN-HZ-63O"/>
                     <connections>
                         <outlet property="collectionView" destination="HWq-Jd-bap" id="baD-QA-hcR"/>
+                        <outlet property="editingToolBar" destination="Gzn-si-kJf" id="Kei-A5-odY"/>
                         <outlet property="searchBarView" destination="7oj-xT-bU6" id="e3h-Gz-GhX"/>
                     </connections>
                 </viewController>
@@ -552,6 +567,6 @@
         <image name="List" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D9m-ca-7DD"/>
+        <segue reference="cks-S1-9hg"/>
     </inferredMetricsTieBreakers>
 </document>

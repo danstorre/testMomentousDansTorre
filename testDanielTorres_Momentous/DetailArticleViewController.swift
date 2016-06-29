@@ -33,7 +33,7 @@ class DetailArticleViewController: UIViewController {
         let okAction = UIAlertAction(title: okButton, style: .Destructive) {
             UIAlertAction in
             self.deleteArticle()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.navigationController?.popViewControllerAnimated(true)
         }
         alertController.addAction(okAction)
         alertController.addAction(UIAlertAction(title: noButton, style: .Default, handler: nil))

@@ -18,11 +18,4 @@ extension UIAlertController {
         }))
     }
     
-    func show(current: UIViewController)  {
-        
-        self.modalPresentationStyle = .CurrentContext
-        self.modalTransitionStyle = .CoverVertical
-        
-        current.presentViewController(self, animated: true, completion: nil)
-    }
 }

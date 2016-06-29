@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSUserDefaults.standardUserDefaults().setFloat(11, forKey: "Slider Value Key for Font SubTitle")
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "Order by name")
             NSUserDefaults.standardUserDefaults().synchronize()
+            
         }
         
     }
@@ -55,11 +56,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func consultWebServicesForImage(article : ArticleWS){
+        Alamofire.request(.GET, article.articleImage!)
+            .responseImage { response in
+                if let imageData = response.result.value {
+                    let image = imageData
+                    _ = Article(articleTitle: article.articleTitle!,
+                        index : article.index,
+                        articleId :article.articleId!,
+                        articleSubTitle : article.articleSubTitle!,
+                        articleAbout : article.articleAbout!,
+                        articleImage : image, context: self.stack.context)
+                }
+        }
+    }
+    
     func backgroundLoad(){
-        
-        stack.performBackgroundBatchOperation { (workerContext) in
-            
-            
+            stack.performBackgroundBatchOperation { (workerContext) in
             self.connectionManager.requestArticles({ (response, error) -> Void in
                 if let error = error {
                     print("error handling alamofire \(error)" )
@@ -69,44 +82,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     case .Success(let data):
                         let json = JSON(data)
                         let responseArticles = ResponseArticles()
-                        
                         responseArticles.llenarResponseArticles(json)
-                        
-                        print("Success Alamofire!" )
-                        
+                        print("Success Alamofire!")
                         for article in responseArticles.articles
                         {
-                            Alamofire.request(.GET, article.articleImage!)
-                                .responseImage { response in
-                                    if let imageData = response.result.value {
-                                        let image = imageData
-                                        _ = Article(articleTitle: article.articleTitle!,
-                                            index : article.index,
-                                            articleId :article.articleId!,
-                                            articleSubTitle : article.articleSubTitle!,
-                                            articleAbout : article.articleAbout!,
-                                            articleImage : image, context: self.stack.context)
-                                    }
-                            }
+                            self.consultWebServicesForImage(article)
                         }
                     case .Failure(let error):
                         print("error handling alamofire \(error)" )
                     }
                 }
             })
-            
         }
-        
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        //checkIfFirstLaunch()
-        eraseData()
+        checkIfFirstLaunch()
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
-            self.backgroundLoad()
-        }
         
         // Start Autosaving every 5 seconds
         stack.autoSave(5)

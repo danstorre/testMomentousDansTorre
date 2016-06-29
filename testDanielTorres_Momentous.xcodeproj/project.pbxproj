@@ -192,13 +192,13 @@
 			name = OTHERS;
 			sourceTree = "<group>";
 		};
-		FB1AD6F91D20D8F000C1829B /* Responses */ = {
+		FB1AD6F91D20D8F000C1829B /* WebServicesResponses */ = {
 			isa = PBXGroup;
 			children = (
 				FB1AD71B1D20DB9000C1829B /* ResponseArticles.swift */,
 				FB1AD71F1D20E3CA00C1829B /* ArticleWS.swift */,
 			);
-			name = Responses;
+			name = WebServicesResponses;
 			sourceTree = "<group>";
 		};
 		FB1AD7001D20DAE800C1829B /* Products */ = {
@@ -266,7 +266,7 @@
 		FBFAE3171D2069490062000A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FB1AD6F91D20D8F000C1829B /* Responses */,
+				FB1AD6F91D20D8F000C1829B /* WebServicesResponses */,
 				FBFAE3141D20693D0062000A /* Model.xcdatamodeld */,
 				FB08D23D1D20868600A88C08 /* CoreDataStack.swift */,
 				FBE1DA2F1D215D2900E79D6D /* ImageArticle+CoreDataProperties.swift */,
