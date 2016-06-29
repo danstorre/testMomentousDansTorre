@@ -41,7 +41,6 @@ class CoreDataCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     
@@ -87,6 +86,17 @@ extension CoreDataCollectionViewController: UICollectionViewDelegate {
         }
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        if editing {
+            if let context = fetchedResultsController?.managedObjectContext,
+            article = fetchedResultsController?.objectAtIndexPath(indexPath) as? Article
+            {
+                context.deleteObject(article)
+            }
+        }
+    }
+
     
      func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items

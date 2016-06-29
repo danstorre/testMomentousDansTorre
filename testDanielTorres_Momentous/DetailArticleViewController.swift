@@ -47,11 +47,15 @@ class DetailArticleViewController: UIViewController {
         addGesturesToLabel()
         
         self.title = title
-        articleTitleUI.text = (article?.articleTitle)! + " - " + (article?.articleSubTitle)!
-        articleAboutUI.text = article?.articleAbout
-        let image = UIImage(data: (article?.image!.imageData)!)
-        buttonImage.imageView!.contentMode = .ScaleAspectFit
-        buttonImage.setImage(image, forState: .Normal)
+        
+        if let article = self.article{
+            articleTitleUI.text = article.articleTitle! + " - " + article.articleSubTitle!
+            articleAboutUI.text = article.articleAbout
+            let image = UIImage(data: article.image!.imageData!)
+            buttonImage.imageView!.contentMode = .ScaleAspectFit
+            buttonImage.setImage(image, forState: .Normal)
+        }
+        
         
         // Do any additional setup after loading the view.
     }

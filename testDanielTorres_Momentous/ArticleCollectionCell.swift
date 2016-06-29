@@ -10,6 +10,7 @@ import UIKit
 
 class ArticleCollectionCell: UICollectionViewCell {
     
+    @IBOutlet weak var deleteIcon: UIImageView!
     @IBOutlet weak var imageArticle: UIImageView!
     @IBOutlet weak var titleArticle: UILabel!
     @IBOutlet weak var subtitleArticle: UILabel!

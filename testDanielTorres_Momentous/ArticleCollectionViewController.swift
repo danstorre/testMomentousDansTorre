@@ -24,7 +24,6 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     
     
     @IBOutlet weak var searchBarView: UISearchBar!
-    @IBOutlet weak var editingToolBar: UIToolbar!
     
     
     override func viewWillAppear(animated: Bool) {
@@ -70,7 +69,6 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         
         createDefaultFetchRequest()
         
-        editingToolBar.hidden = true
         navigationItem.leftBarButtonItem = editButtonItem()
         // initialize search controller after the core data
         self.resultSearchController.searchResultsUpdater = self
@@ -101,17 +99,9 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         collectionView?.allowsMultipleSelection = editing
-        editingToolBar.hidden = !editing
+        collectionView?.reloadData()
     }
-    
-    @IBAction func deleteItems(sender: UIBarButtonItem) {
-        let indexpaths = collectionView?.indexPathsForSelectedItems()
-        
-        if let indexpaths = indexpaths {
-            collectionView?.deleteItemsAtIndexPaths(indexpaths)
-        }
-    }
-    
+
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // Find the right notebook for this indexpath
         let article = fetchedResultsController!.objectAtIndexPath(indexPath) as! Article
@@ -119,14 +109,19 @@ class ArticleCollectionViewController: CoreDataCollectionViewController {
         // Create the cell
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArticleCell", forIndexPath: indexPath) as! ArticleCollectionCell
         
+        cell.deleteIcon.hidden = !editing
 //      Sync article -> cell
         cell.titleArticle.font = cell.titleArticle.font.fontWithSize(CGFloat(fontSizeTitle))
         cell.titleArticle.text = article.articleTitle
+        cell.titleArticle.userInteractionEnabled = !editing
         
         cell.subtitleArticle.font = cell.subtitleArticle.font.fontWithSize(CGFloat(fontSizeSubTitle))
         cell.subtitleArticle.text = article.articleSubTitle
+        cell.subtitleArticle.userInteractionEnabled = !editing
+        
         let image = UIImage(data: article.image!.imageData!)
         cell.imageArticle.image = image
+        cell.imageArticle.userInteractionEnabled = !editing
         
         return cell// Find the right notebook for this indexpath
     }
