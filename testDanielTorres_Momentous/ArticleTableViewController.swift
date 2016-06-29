@@ -83,21 +83,13 @@ class ArticleTableViewController: CoreDataTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-        // This method must be implemented by our subclass. There's no way
-        // CoreDataTableViewController can know what type of cell we want to
-        // use.
-        
-        // Find the right notebook for this indexpath
         let article = fetchedResultsController!.objectAtIndexPath(indexPath) as! Article
         
-        // Create the cell
         let cell = tableView.dequeueReusableCellWithIdentifier("ArticleCell", forIndexPath: indexPath)
         
-        // Sync article -> cell
         cell.textLabel?.font = cell.textLabel?.font.fontWithSize(CGFloat(fontSizeTitle))
         cell.textLabel?.text = article.articleTitle
-        
-        
+                
         cell.detailTextLabel?.font = cell.textLabel?.font.fontWithSize(CGFloat(fontSizeSubTitle))
         cell.detailTextLabel?.text = article.articleSubTitle
         let image = UIImage(data: article.image!.imageData!)
