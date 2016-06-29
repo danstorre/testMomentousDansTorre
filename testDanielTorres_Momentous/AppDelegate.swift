@@ -28,12 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             print("this is first launch")
             
-            eraseData()
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
-                self.backgroundLoad()
-            }
-            
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedBefore")
             NSUserDefaults.standardUserDefaults().setFloat(16, forKey: "Slider Value Key for Font Title")
             NSUserDefaults.standardUserDefaults().setFloat(11, forKey: "Slider Value Key for Font SubTitle")
@@ -96,17 +90,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func runBackGroundRequestWebService(){
+        if Reachability.isConnectedToNetwork() {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
+                self.backgroundLoad()
+            }
+        }
+        else
+        {
+            print("no internet !")
+            NSNotificationCenter.defaultCenter().postNotificationName(noInternetKey, object: self)
+        }
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        //checkIfFirstLaunch()
+        checkIfFirstLaunch()
+        
         eraseData()
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue()){
-            self.backgroundLoad()
-        }
+        runBackGroundRequestWebService()
         
         // Start Autosaving every 5 seconds
-        stack.autoSave(60)
+        stack.autoSave(5)
         
         
         return true

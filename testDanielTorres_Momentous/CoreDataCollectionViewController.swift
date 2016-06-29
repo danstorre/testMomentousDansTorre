@@ -13,7 +13,9 @@ private let reuseIdentifier = "ArticleCell"
 
 class CoreDataCollectionViewController: UIViewController {
 
+    //tricky var for making NSFetchedResultsControllerDelegate work smoth with collectionView
     var blockOperations: [NSBlockOperation] = []
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK:  - Properties

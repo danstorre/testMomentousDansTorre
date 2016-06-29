@@ -34,7 +34,9 @@ class ArticleTableViewController: CoreDataTableViewController {
         
         //Get the stack
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
         let stack = delegate.stack
+        
         
         // Create a fetchrequest
         let fr = NSFetchRequest(entityName: "Article")
@@ -71,6 +73,15 @@ class ArticleTableViewController: CoreDataTableViewController {
         // makes the searchbar stay in the current screen and not spill into the next screen
         definesPresentationContext = true
     }
+    
+    
+    
+    @IBAction func refresh(sender: AnyObject) {
+        
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        delegate.runBackGroundRequestWebService()
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

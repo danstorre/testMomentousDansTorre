@@ -11,7 +11,7 @@ import Alamofire
 
 class ConnectionManager: NSObject {
 
-    
+
     func requestArticles(completion: ( Response<AnyObject, NSError>?, NSError?) -> Void) {
         
         Alamofire.request(Router.articles())

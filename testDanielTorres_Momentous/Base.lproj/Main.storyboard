@@ -42,8 +42,8 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O7w-Rn-hnL">
                                                     <rect key="frame" x="8" y="8" width="129" height="165"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kgC-zH-dGJ">
-                                                            <rect key="frame" x="19" y="0.0" width="91" height="120"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kgC-zH-dGJ">
+                                                            <rect key="frame" x="40" y="0.0" width="50" height="120"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="999" constant="120" id="IUG-HR-doL"/>
                                                             </constraints>
@@ -204,6 +204,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="E21-i5-zx3">
+                        <barButtonItem key="leftBarButtonItem" image="Refresh" id="0R2-it-RIt">
+                            <connections>
+                                <action selector="refresh:" destination="qfo-a9-tLx" id="jya-AD-a4j"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Horizontal Settings Mixer Filled" id="YPu-zy-PdX">
                             <connections>
                                 <segue destination="ank-7l-xFw" kind="show" identifier="settings" id="eBd-bd-RAh"/>
@@ -424,8 +429,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50b-sI-mBs">
                                 <rect key="frame" x="8" y="64" width="304" height="367"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZJc-7t-OaU">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="367"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJc-7t-OaU">
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="480"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleAspectFit" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eKb-Vo-RCX">
                                                 <rect key="frame" x="0.0" y="0.0" width="304" height="117"/>
@@ -515,10 +520,10 @@
             </objects>
             <point key="canvasLocation" x="2832" y="826"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar Controller View Controller-->
         <scene sceneID="5id-MX-XyM">
             <objects>
-                <tabBarController id="55A-oN-lxa" sceneMemberID="viewController">
+                <tabBarController id="55A-oN-lxa" customClass="TabBarControllerViewController" customModule="testDanielTorres_Momentous" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="SE6-Yn-pvj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -578,9 +583,10 @@
         <image name="Grid Filled" width="25" height="25"/>
         <image name="Horizontal Settings Mixer Filled" width="25" height="25"/>
         <image name="List" width="25" height="25"/>
+        <image name="Refresh" width="25" height="25"/>
         <image name="deleteItem" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cks-S1-9hg"/>
+        <segue reference="D9m-ca-7DD"/>
     </inferredMetricsTieBreakers>
 </document>
