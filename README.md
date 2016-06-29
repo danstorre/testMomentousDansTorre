@@ -13,7 +13,7 @@ The app shows the images has they are downloading and you have the freedom to mo
 You can search for an article in the table and collection view section, can delete from both table and collection 
 view section.
 
-The app first launch sets the keys related to settings in the app first launch and save the settings everytime
+The app sets the keys related to settings in the first launch and save the settings everytime
 the user changes its options automatically.
 
 There is a button refresh that is more like requesting the service again so the app can have more articles to the ones 
